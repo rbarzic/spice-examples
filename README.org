@@ -1,0 +1,17 @@
+#+TITLE:     Spice examples
+#+AUTHOR:    Ronan BARZIC
+#+EMAIL:     rbarzic@gmail.com
+#+TODO: TODO  IN-PROGRESS  | DONE  CANCELED
+
+Examples to demonstrate use of a few open-source Spice simulators and
+related tools
+
+* ngsice/simple_inverter 
+
+
+
+* pyspice/simple_inverter
+
+ - .lib file
+   - .MODEL NM NMOS LEVEL=8 => .MODEL NM NMOS (LEVEL=8)
+   - Check source code for parameter position for complex voltage source
