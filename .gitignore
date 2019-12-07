@@ -1,0 +1,7 @@
+/ngspice/simple_inverter/b3v33check.log
+*.raw
+/**/.vscode/launch.json
+*.py~
+*.log
+
+
