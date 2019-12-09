@@ -1,0 +1,21 @@
+
+=======
+ Spice
+=======
+
+.. toctree::
+    Spice/BasicElement
+    Spice/ElementParameter
+    Spice/Expression
+    Spice/HighLevelElement
+    Spice/Library
+    Spice/Netlist
+    Spice/NgSpice
+    Spice/Parser
+    Spice/RawFile
+    Spice/Simulation
+    Spice/Xyce
+
+.. automodule:: PySpice.Spice
+   :members:
+   :show-inheritance:

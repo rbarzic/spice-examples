@@ -1,0 +1,15 @@
+
+=========
+ NgSpice
+=========
+
+.. toctree::
+    NgSpice/RawFile
+    NgSpice/Server
+    NgSpice/Shared
+    NgSpice/Simulation
+    NgSpice/SimulationType
+
+.. automodule:: PySpice.Spice.NgSpice
+   :members:
+   :show-inheritance:

@@ -1,0 +1,91 @@
+
+.. include:: /project-links.txt
+.. include:: /abbreviation.txt
+
+
+#################
+ Resistor Bridge
+#################
+
+.. getthecode:: resistor-bridge.py
+    :language: python3
+    :hidden:
+
+This example shows the computation of the DC biases in a resistor bridge.
+
+.. code-block:: py3
+
+    
+    
+    import PySpice.Logging.Logging as Logging
+    logger = Logging.setup_logging()
+    
+    
+    from PySpice.Spice.Netlist import Circuit
+    from PySpice.Unit import *
+    
+    
+
+
+.. image:: resistor-bridge.png
+    :align: center
+
+
+.. code-block:: py3
+
+    
+    circuit = Circuit('Resistor Bridge')
+    
+    circuit.V('input', 1, circuit.gnd, 10@u_V)
+    circuit.R(1, 1, 2, 2@u_kΩ)
+    circuit.R(2, 1, 3, 1@u_kΩ)
+    circuit.R(3, 2, circuit.gnd, 1@u_kΩ)
+    circuit.R(4, 3, circuit.gnd, 2@u_kΩ)
+    circuit.R(5, 3, 2, 2@u_kΩ)
+    
+    simulator = circuit.simulator(temperature=25, nominal_temperature=25)
+    analysis = simulator.operating_point()
+    
+    for node in analysis.nodes.values():
+        print('Node {}: {:4.1f} V'.format(str(node), float(node))) # Fixme: format value + unit
+
+
+.. code-block:: none
+
+    [1;32m2019-03-10 18:51:25,090[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.523 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,092[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.523 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,092[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.523 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,093[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.523 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,094[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.523 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,094[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.547 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,095[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.668 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,096[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.828 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,097[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.891 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,097[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.922 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,098[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.973 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,099[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.973 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,103[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.238 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,105[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.238 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,106[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.238 MB, limit =  507.367 MB
+    
+    [1;32m2019-03-10 18:51:25,113[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.441 MB, limit =  507.367 MB
+    
+    Node 3:  6.0 V
+    Node 2:  4.0 V
+    Node 1: 10.0 V
+    
+

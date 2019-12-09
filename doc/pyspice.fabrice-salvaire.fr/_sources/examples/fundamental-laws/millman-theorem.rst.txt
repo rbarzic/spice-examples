@@ -1,0 +1,159 @@
+
+.. include:: /project-links.txt
+.. include:: /abbreviation.txt
+
+
+
+.. getthecode:: millman-theorem.py
+    :language: python3
+    :hidden:
+
+===================
+ Millman's theorem
+===================
+
+Millman's theorem is a method to compute the voltage of a node in such circuits:
+
+.. image:: millman-theorem.png
+    :align: center
+
+The voltage at node A is:
+
+.. math::
+
+    V_A = \frac{\sum \frac{V_i}{R_i}}{\sum \frac{1}{R_i}}
+
+We can extend this theorem to branches with current sources:
+
+.. math::
+
+    V_A = \frac{\sum \frac{V_i}{R_i} + \sum I_k}{\sum \frac{1}{R_i}}
+
+Note voltage sources can be null and resistances in current's branches don't change the denominator.
+
+.. image:: millman-theorem-with-current-source.png
+    :align: center
+
+
+.. code-block:: py3
+
+    
+    
+    import PySpice.Logging.Logging as Logging
+    logger = Logging.setup_logging()
+    
+    
+    import numpy as np
+    
+    
+    from PySpice.Spice.Netlist import Circuit
+    from PySpice.Unit import *
+    
+    
+    circuit = Circuit("Millman's theorem")
+    
+    number_of_branches = 3
+    for i in range(1, number_of_branches +1):
+        circuit.V('input%u' % i, i, circuit.gnd, i@u_V)
+        circuit.R(i, i, 'A', i@u_kΩ)
+    
+    simulator = circuit.simulator(temperature=25, nominal_temperature=25)
+    analysis = simulator.operating_point()
+    
+    node_A = analysis.A
+    print('Node {}: {:5.2f} V'.format(str(node_A), float(node_A)))
+
+
+.. code-block:: none
+
+    [1;32m2019-03-10 18:51:07,562[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.531 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,563[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.531 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,564[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.531 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,565[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.531 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,566[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.531 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,566[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.555 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,567[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.676 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,568[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.836 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,568[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.898 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,569[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.930 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,570[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.980 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,570[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.980 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,574[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.238 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,576[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.238 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,577[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.238 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,585[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.441 MB, limit =  797.078 MB
+    
+    Node a:  1.64 V
+    
+
+
+.. code-block:: py3
+
+    
+    branch_voltages = np.arange(1, number_of_branches +1)
+    branch_resistances = branch_voltages * float(kilo(1))
+    conductances = 1 / branch_resistances
+    voltage_A = np.sum(branch_voltages * conductances) / np.sum(conductances)
+    print('V(A) = {:5.2f} V'.format(voltage_A))
+
+
+.. code-block:: none
+
+    V(A) =  1.64 V
+    
+
+
+.. code-block:: py3
+
+    
+    # with current sources
+    for i in range(1, number_of_branches +1):
+        ii = number_of_branches + i
+        circuit.I('input%u' % i, circuit.gnd, ii, 100*i@u_uA)
+        circuit.R(ii, ii, 'A', i@u_kΩ)
+    
+    simulator = circuit.simulator(temperature=25, nominal_temperature=25)
+    analysis = simulator.operating_point()
+    
+    node_A = analysis.A
+    print('Node {}: {:5.2f} V'.format(str(node_A), float(node_A)))
+
+
+.. code-block:: none
+
+    [1;32m2019-03-10 18:51:07,615[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.820 MB, limit =  797.078 MB
+    
+    [1;32m2019-03-10 18:51:07,618[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.820 MB, limit =  797.078 MB
+    
+    Node a:  1.96 V
+    
+
+
+.. code-block:: py3
+
+    
+    branch_currents = np.arange(1, number_of_branches +1) * float(micro(100))
+    voltage_A += np.sum(branch_currents) / np.sum(conductances)
+    print('V(A) = {:5.2f} V'.format(voltage_A))
+
+
+.. code-block:: none
+
+    V(A) =  1.96 V
+    
+

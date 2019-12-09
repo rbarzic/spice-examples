@@ -1,0 +1,8 @@
+
+================
+ SimulationType
+================
+
+.. automodule:: PySpice.Spice.NgSpice.SimulationType
+   :members:
+   :show-inheritance:

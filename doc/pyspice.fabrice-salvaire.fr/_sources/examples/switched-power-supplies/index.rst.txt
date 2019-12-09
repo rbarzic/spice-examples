@@ -1,0 +1,12 @@
+
+
+#########################
+ Switched Power Supplies
+#########################
+
+This section has 1 documents.
+
+.. toctree::
+  :maxdepth: 1
+
+  buck-converter.rst

@@ -1,0 +1,1387 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PySpice.Spice.HighLevelElement &mdash; PySpice @VERSION@ documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../../../_static/getthecode.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/PySpice.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  },
+  "theme": "classic",
+  "position": "bottom-right"
+})});
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PySpice
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                @VERSION@
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">1. Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#what-is-pyspice">1.1. What is PySpice ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-is-pyspice-licensed">1.2. How is PySpice licensed ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#are-there-some-papers-or-talks-about-pyspice">1.3. Are there some papers or talks about PySpice ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#going-further-with-pyspice">1.4. Going further with PySpice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-can-pyspice-be-used-for-learning">1.5. How can PySpice be used for learning ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#which-platforms-are-supported-by-pyspice">1.6. Which platforms are supported by PySpice ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-to-install-pyspice">1.7. How to install PySpice ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-does-pyspice-differ-from-simulator-like-ltspice">1.8. How does PySpice differ from simulator like LTspice ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-can-a-non-gui-simulator-be-helpful">1.9. How can a non-GUI simulator be helpful ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#what-are-the-benefits-of-pyspice-over-ngspice-xyce">1.10. What are the benefits of PySpice over Ngspice / Xyce ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-is-pyspice-interfaced-with-ngspice">1.11. How is PySpice interfaced with Ngspice ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-is-pyspice-interfaced-with-xyce">1.12. How is PySpice interfaced with Xyce ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-is-the-netlist-defined">1.13. How is the netlist defined ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#can-i-run-ngspice-using-interpreter-commands">1.14. Can I run Ngspice using interpreter commands ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-are-spice-libraries-handled">1.15. How are Spice libraries handled ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-are-units-handled">1.16. How are units handled ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#which-version-of-python-is-required">1.17. Which version of Python is required ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#which-version-of-ngspice-is-required">1.18. Which version of Ngspice is required ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#which-version-of-xyce-is-required">1.19. Which version of Xyce is required ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#which-flavours-of-spice-are-supported">1.20. Which flavours of SPICE are supported ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#what-else-should-you-be-aware-of">1.21. What else should you be aware of ?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../news.html">2. News</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v1-3-0-development-release">2.1. V1.3.0 (development release)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v1-2-0-production-release-2018-06-07">2.2. V1.2.0 (production release) 2018-06-07</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v1-1-0-2017-09-06">2.3. V1.1.0 2017-09-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v1-0-0-2017-09-06">2.4. V1.0.0 2017-09-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v0-4-2">2.5. V0.4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v0-4-0-2017-07-31">2.6. V0.4.0 2017-07-31</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v0-3-2-2017-02-22">2.7. V0.3.2 2017-02-22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v0-3-1-2017-02-22">2.8. V0.3.1 2017-02-22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v0-3-0-2015-12-08">2.9. V0.3.0 2015-12-08</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v0-2014-03-21">2.10. V0 2014-03-21</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap.html">3. Roadmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../roadmap.html#v1-3">3.1. V1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../roadmap.html#v2">3.2. V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../roadmap.html#some-ideas-for-the-future">3.3. Some ideas for the future</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">4. Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#on-windows">4.1. On Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#on-linux">4.2. On Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#on-osx">4.3. On OSX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#how-to-get-the-examples">4.4. How to get the Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-from-pypi-repository">4.5. Installation from PyPi Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#install-a-more-recent-version-from-github">4.6. Install a more recent version from Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-from-source">4.7. Installation from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#dependencies">4.8. Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#ngspice-compilation">4.9. Ngspice Compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#how-to-get-xyce">4.10. How to get Xyce ?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators.html">5. Simulators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../simulators.html#id1">5.1. Ngspice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../simulators.html#id2">5.2. Xyce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../simulators.html#gnucap">5.3. Gnucap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../simulators.html#qucs">5.4. Qucs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">6. User FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-get-help-or-report-an-issue">6.1. How to get help or report an issue ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-typeset-u-k-or-u-v-in-python-code">6.2. How to typeset <code class="code docutils literal notranslate"><span class="pre">u_kΩ</span></code> or <code class="code docutils literal notranslate"><span class="pre">u_μV</span></code> in Python code ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-perform-division-with-units">6.3. How to perform division with units ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#is-unit-api-well-tested">6.4. Is unit API well tested ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#is-ground-node-required">6.5. Is ground node required ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-deal-with-spice-parameters-that-clash-with-python-keywords">6.6. How to deal with SPICE parameters that clash with Python keywords ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-pass-raw-spice-command">6.7. How to pass raw SPICE command ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-set-the-ngspice-library-path">6.8. How to set the Ngspice library path ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-set-the-ngspice-executable-path">6.9. How to set the Ngspice executable path ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-set-the-xyce-path">6.10. How to set the Xyce path ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-set-the-simulator">6.11. How to set the simulator ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#is-xyce-100-compatible-with-spice">6.12. Is Xyce 100% compatible with SPICE ?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example-introduction.html">7. Introduction to the Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-introduction.html#how-to-learn-python">7.1. How to Learn Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-introduction.html#how-to-run-these-examples">7.2. How to Run these Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-introduction.html#how-to-write-a-netlist">7.3. How to Write a Netlist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">8. Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/advanced-usages/index.html">8.1. Advanced Usages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/advanced-usages/internal-device-parameters.html">8.1.1. Internal Device Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/advanced-usages/netlist-manipulations.html">8.1.2. Netlist Manipulations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/basic-usages/index.html">8.2. Basic Usages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/basic-usages/subcircuit.html">8.2.1. How to Use SubCircuit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/data-analysis/index.html">8.3. Data Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/data-analysis/fft.html">8.3.1. Fast Fourier Transform</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/diode/index.html">8.4. Diode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/RingModulator.html">8.4.1. Ringmodulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/diode-characteristic-curve.html">8.4.2. Diode Characteristic Curve</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/diode/diode-characteristic-curve.html#theory">8.4.2.1. Theory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/diode/diode-characteristic-curve.html#simulation">8.4.2.2. Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/diode-recovery-time.html">8.4.3. Diode Recovery Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/rectification.html">8.4.4. Rectification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/ring-modulator.html">8.4.5. Ring Modulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/voltage-multiplier.html">8.4.6. Voltage Multiplier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/zener-characteristic-curve.html">8.4.7. Zener Characteristic Curve</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/electricity/index.html">8.5. Electricity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/electricity/three-phase.html">8.5.1. Three-phased Current: Y and Delta configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/filter/index.html">8.6. Filter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/filter/low-pass-rc-filter.html">8.6.1. Low Pass Rc Filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/filter/rlc-filter.html">8.6.2. RLC Filter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/fundamental-laws/index.html">8.7. Kirchhoff’s circuit laws</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/fundamental-laws/index.html#ohm-s-law">8.8. Ohm’s Law</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/fundamental-laws/millman-theorem.html">8.8.1. Millman’s theorem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/fundamental-laws/thévenin-norton-theorem.html">8.8.2. Thévenin and Norton Theorem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/fundamental-laws/voltage-current-divider.html">8.8.3. Voltage and Current Divider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ngspice-shared/external-source.html">8.9. Simulation using External Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ngspice-shared/ngspice-interpreter.html">8.10. NgSpice Interpreter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/operational-amplifier/index.html">8.11. Operational Amplifier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/operational-amplifier/OperationalAmplifier.html">8.11.1. Operationalamplifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/operational-amplifier/astable.html">8.11.2. Astable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/operational-amplifier/operational-amplifier.html">8.11.3. Operational Amplifier</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/passive/index.html">8.12. Passive</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/passive/capacitor-inductor.html">8.12.1. Capacitor Inductor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/power-supplies/index.html">8.13. Power Supplies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/power-supplies/HP54501A.html">8.13.1. Hp54501A</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/power-supplies/capacitive-half-wave-rectification-post-zener.html">8.13.2. Capacitive Half Wave Rectification Post Zener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/power-supplies/capacitive-half-wave-rectification-pre-zener.html">8.13.3. Capacitive Half Wave Rectification Pre Zener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/power-supplies/hp54501a-cem.html">8.13.4. CEM Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/rectification.html">8.4.4. Rectification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/relay/index.html">8.14. Relay</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/relay/relay.html">8.14.1. Relay drived by a bipolar transistor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/resistor/index.html">8.15. Resistor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/resistor/resistor-bridge.html">8.15.1. Resistor Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/resistor/voltage-divider.html">8.15.2. Voltage Divider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/spice-parser/bootstrap-example.html">8.16. Spice Netlist Parser Bootstrap Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/spice-parser/kicad-example.html">8.17. Kicad Netlist Parser Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/switched-power-supplies/index.html">8.18. Switched Power Supplies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/switched-power-supplies/buck-converter.html">8.18.1. Buck Converter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/transformer/index.html">8.19. Transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/transformer/Transformer.html">8.19.1. Transformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/transformer/transformer-example.html">8.19.2. Transformer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/transistor/index.html">8.20. Transistor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/transistor/ac-coupled-amplifier.html">8.20.1. AC Coupled Amplifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/transistor/transistor.html">8.20.2. Bipolar Transistor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/transmission-lines/index.html">8.21. Transmission Lines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/transmission-lines/time-delay.html">8.21.1. Time Delay</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example-whish-list.html">9. Example Wish List</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#operational-points">9.1. Operational Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#amplifier">9.2. Amplifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#diode">9.3. Diode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#filters">9.4. Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#inductors">9.5. Inductors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#operational-amplifier">9.6. Operational Amplifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#oscillators">9.7. Oscillators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#power-supplies">9.8. Power Supplies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#switching-power-supplies">9.9. Switching Power Supplies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#telecommunication">9.10. Telecommunication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#transistor">9.11. Transistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#mosfet">9.12. MOSFET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#scr">9.13. SCR</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design-notes.html">10. Design Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference-manual.html">11. API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/PySpice.html">11.1. PySpice</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/PySpice/Config.html">11.1.1. Config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Config/ConfigInstall.html">11.1.1.1. ConfigInstall</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/PySpice/DeviceLibrary.html">11.1.2. DeviceLibrary</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/PySpice/Doc.html">11.1.3. Doc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Doc/ExampleTools.html">11.1.3.1. ExampleTools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/PySpice/Logging.html">11.1.4. Logging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Logging/Logging.html">11.1.4.1. Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/PySpice/Math.html">11.1.5. Math</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Math/Calculus.html">11.1.5.1. Calculus</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/PySpice/Physics.html">11.1.6. Physics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Physics/MaterialProperties.html">11.1.6.1. MaterialProperties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Physics/PhysicalConstants.html">11.1.6.2. PhysicalConstants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Physics/Resistor.html">11.1.6.3. Resistor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Physics/SemiConductor.html">11.1.6.4. SemiConductor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/PySpice/Plot.html">11.1.7. Plot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Plot/BodeDiagram.html">11.1.7.1. BodeDiagram</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/PySpice/Probe.html">11.1.8. Probe</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Probe/Plot.html">11.1.8.1. Plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Probe/WaveForm.html">11.1.8.2. WaveForm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/PySpice/Spice.html">11.1.9. Spice</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Spice/BasicElement.html">11.1.9.1. BasicElement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Spice/ElementParameter.html">11.1.9.2. ElementParameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Spice/Expression.html">11.1.9.3. Expression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Spice/HighLevelElement.html">11.1.9.4. HighLevelElement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Spice/Library.html">11.1.9.5. Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Spice/Netlist.html">11.1.9.6. Netlist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Spice/NgSpice.html">11.1.9.7. NgSpice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Spice/Parser.html">11.1.9.8. Parser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Spice/RawFile.html">11.1.9.9. RawFile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Spice/Simulation.html">11.1.9.10. Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Spice/Xyce.html">11.1.9.11. Xyce</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/PySpice/Tools.html">11.1.10. Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Tools/EnumFactory.html">11.1.10.1. EnumFactory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Tools/File.html">11.1.10.2. File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Tools/Path.html">11.1.10.3. Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Tools/StringTools.html">11.1.10.4. StringTools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/PySpice/Unit.html">11.1.11. Unit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Unit/SiUnits.html">11.1.11.1. SiUnits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/PySpice/Unit/Unit.html">11.1.11.2. Unit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference-manual.html#indexes">11.2. Indexes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development.html">12. Development &amp; Community</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#how-you-can-help">12.1. How you can help ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#contributors">12.2. Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../how-to-refer.html">13. How to Refer to PySpice ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../donate.html">14. How to Help Further ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../donate.html#professional-support">14.1. Professional Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../on-the-web.html">15. PySpice on the Web</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../on-the-web.html#articles">15.1. Articles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../on-the-web.html#on-github">15.2. On Github</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../related-projects.html">16. Related Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../related-projects.html#pycpusimulator">16.1. PyCpuSimulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../related-projects.html#ahkab">16.2. Ahkab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../related-projects.html#lcapy">16.3. Lcapy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../related-projects.html#other-projects">16.4. Other Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bibliography.html">17. Bibliography</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../bibliography.html#related-articles">17.1. Related articles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../bibliography.html#spice-references">17.2. SPICE References</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PySpice</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../PySpice.html">PySpice</a> &raquo;</li>
+        
+          <li><a href="../Spice.html">PySpice.Spice</a> &raquo;</li>
+        
+      <li>PySpice.Spice.HighLevelElement</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for PySpice.Spice.HighLevelElement</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># PySpice - A Spice Package for Python</span>
+<span class="c1"># Copyright (C) 2014 Fabrice Salvaire</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################################################</span>
+
+<span class="sd">&quot;&quot;&quot;This module implements high level elements built on top of Spice elements.&quot;&quot;&quot;</span>
+
+<span class="c1">####################################################################################################</span>
+
+<span class="kn">from</span> <span class="nn">..Math</span> <span class="k">import</span> <span class="n">rms_to_amplitude</span><span class="p">,</span> <span class="n">amplitude_to_rms</span>
+<span class="kn">from</span> <span class="nn">..Tools.StringTools</span> <span class="k">import</span> <span class="n">join_list</span><span class="p">,</span> <span class="n">join_dict</span><span class="p">,</span> <span class="n">str_spice</span>
+<span class="kn">from</span> <span class="nn">..Unit</span> <span class="k">import</span> <span class="n">as_s</span><span class="p">,</span> <span class="n">as_V</span><span class="p">,</span> <span class="n">as_A</span><span class="p">,</span> <span class="n">as_Hz</span>
+<span class="kn">from</span> <span class="nn">.BasicElement</span> <span class="k">import</span> <span class="n">VoltageSource</span><span class="p">,</span> <span class="n">CurrentSource</span>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="SourceMixinAbc"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.SourceMixinAbc">[docs]</a><span class="k">class</span> <span class="nc">SourceMixinAbc</span><span class="p">:</span>
+
+    <span class="n">__as_unit__</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="VoltageSourceMixinAbc"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.VoltageSourceMixinAbc">[docs]</a><span class="k">class</span> <span class="nc">VoltageSourceMixinAbc</span><span class="p">:</span>
+
+    <span class="n">__as_unit__</span> <span class="o">=</span> <span class="n">as_V</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="CurrentSourceMixinAbc"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.CurrentSourceMixinAbc">[docs]</a><span class="k">class</span> <span class="nc">CurrentSourceMixinAbc</span><span class="p">:</span>
+
+    <span class="n">__as_unit__</span> <span class="o">=</span> <span class="n">as_A</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="SinusoidalMixin"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.SinusoidalMixin">[docs]</a><span class="k">class</span> <span class="nc">SinusoidalMixin</span><span class="p">(</span><span class="n">SourceMixinAbc</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a sinusoidal waveform.</span>
+
+<span class="sd">    +------+----------------+---------------+-------+</span>
+<span class="sd">    | Name + Parameter      + Default Value + Units |</span>
+<span class="sd">    +------+----------------+---------------+-------+</span>
+<span class="sd">    | Vo   + offset         +               + V, A  |</span>
+<span class="sd">    +------+----------------+---------------+-------+</span>
+<span class="sd">    | Va   + amplitude      +               + V, A  |</span>
+<span class="sd">    +------+----------------+---------------+-------+</span>
+<span class="sd">    | f    + frequency      + 1 / TStop     + Hz    |</span>
+<span class="sd">    +------+----------------+---------------+-------+</span>
+<span class="sd">    | Td   + delay          + 0.0           + sec   |</span>
+<span class="sd">    +------+----------------+---------------+-------+</span>
+<span class="sd">    | Df   + damping factor + 0.01          + 1/sec |</span>
+<span class="sd">    +------+----------------+---------------+-------+</span>
+
+<span class="sd">    The shape of the waveform is described by the following formula:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        V(t) = \begin{cases}</span>
+<span class="sd">          V_o &amp; \text{if}\ 0 \leq t &lt; T_d, \\</span>
+<span class="sd">          V_o + V_a e^{-D_f(t-T_d)} \sin\left(2\pi f (t-T_d)\right) &amp; \text{if}\ T_d \leq t &lt; T_{stop}.</span>
+<span class="sd">        \end{cases}</span>
+
+<span class="sd">    Spice syntax::</span>
+
+<span class="sd">        SIN ( Voffset Vamplitude Freq Tdelay DampingFactor )</span>
+
+<span class="sd">    Public Attributes:</span>
+
+<span class="sd">      :attr:`amplitude`</span>
+
+<span class="sd">      :attr:`damping_factor`</span>
+
+<span class="sd">      :attr:`dc_offset`</span>
+
+<span class="sd">      :attr:`delay`</span>
+
+<span class="sd">      :attr:`frequency`</span>
+
+<span class="sd">      :attr:`offset`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">dc_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                 <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">damping_factor</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dc_offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__as_unit__</span><span class="p">(</span><span class="n">dc_offset</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__as_unit__</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__as_unit__</span><span class="p">(</span><span class="n">amplitude</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span> <span class="o">=</span> <span class="n">as_Hz</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span> <span class="c1"># Fixme: protect by setter?</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">damping_factor</span> <span class="o">=</span> <span class="n">as_Hz</span><span class="p">(</span><span class="n">damping_factor</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">rms_voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">amplitude_to_rms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">period</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">period</span>
+
+    <span class="c1">##############################################</span>
+
+<div class="viewcode-block" id="SinusoidalMixin.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.SinusoidalMixin.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">sin_part</span> <span class="o">=</span> <span class="n">join_list</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">damping_factor</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">join_list</span><span class="p">((</span>
+            <span class="s1">&#39;DC </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">str_spice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dc_offset</span><span class="p">)),</span>
+            <span class="s1">&#39;AC SIN(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sin_part</span><span class="p">),</span>
+        <span class="p">))</span></div></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="PulseMixin"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.PulseMixin">[docs]</a><span class="k">class</span> <span class="nc">PulseMixin</span><span class="p">(</span><span class="n">SourceMixinAbc</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;This class implements a pulse waveform.</span>
+
+<span class="sd">    Nomenclature:</span>
+
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | Name   + Parameter     + Default Value + Units |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | V1     + initial value +               + V, A  |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | V2     + pulsed value  +               + V, A  |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | Td     + delay time    + 0.0           + sec   |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | Tr     + rise time     + Tstep         + sec   |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | Tf     + fall time     + Tstep         + sec   |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | Pw     + pulse width   + Tstop         + sec   |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | Period + period        + Tstop         + sec   |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | Phase  + phase         + 0.0           + sec   |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+
+<span class="sd">    Phase is only possible when XSPICE is enabled</span>
+
+<span class="sd">    Spice Syntax::</span>
+
+<span class="sd">        PULSE ( V1 V2 Td Tr Tf Pw Period Phase )</span>
+
+<span class="sd">    A single pulse so specified is described by the following table:</span>
+
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | Time        | Value |</span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | 0           | V1    |</span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | Td          | V1    |</span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | Td+Tr       | V2    |</span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | Td+Tr+Pw    | V2    |</span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | Td+Tr+Pw+Tf | V1    |</span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | Tstop       | V1    |</span>
+<span class="sd">    +-------------+-------+</span>
+
+<span class="sd">    Note: default value in Spice for rise and fall time is the simulation transient step, pulse</span>
+<span class="sd">    width and period is the simulation stop time.</span>
+
+<span class="sd">    Public Attributes:</span>
+
+<span class="sd">      :attr:`delay_time`</span>
+
+<span class="sd">      :attr:`fall_time`</span>
+
+<span class="sd">      :attr:`initial_value`</span>
+
+<span class="sd">      :attr:`period`</span>
+
+<span class="sd">      :attr:`phase`</span>
+
+<span class="sd">      :attr:`pulse_width`</span>
+
+<span class="sd">      :attr:`pulsed_value`</span>
+
+<span class="sd">      :attr:`rise_time`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">initial_value</span><span class="p">,</span> <span class="n">pulsed_value</span><span class="p">,</span>
+                 <span class="n">pulse_width</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span>
+                 <span class="n">delay_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rise_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fall_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">phase</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="c1"># Fixme: default</span>
+        <span class="c1">#  rise_time, fall_time = Tstep</span>
+        <span class="c1">#  pulse_width, period = Tstop</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__as_unit__</span><span class="p">(</span><span class="n">initial_value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pulsed_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__as_unit__</span><span class="p">(</span><span class="n">pulsed_value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">delay_time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rise_time</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">rise_time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fall_time</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">fall_time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pulse_width</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">pulse_width</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">period</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">period</span><span class="p">)</span> <span class="c1"># Fixme: protect by setter?</span>
+
+        <span class="c1"># XSPICE</span>
+        <span class="k">if</span> <span class="n">phase</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">phase</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">phase</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">phase</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># # Fixme: to func?</span>
+        <span class="c1"># # Check parameters</span>
+        <span class="c1"># found_none = False</span>
+        <span class="c1"># for parameter in (&#39;rise_time&#39;, &#39;fall_time&#39;, &#39;pulse_width&#39;, &#39;period&#39;):</span>
+        <span class="c1">#     parameter_value = getattr(self, parameter)</span>
+        <span class="c1">#     if found_none:</span>
+        <span class="c1">#         if parameter_value is not None:</span>
+        <span class="c1">#             raise ValueError(&quot;Parameter {} is set but some previous parameters was not set&quot;.format(parameter))</span>
+        <span class="c1">#     else:</span>
+        <span class="c1">#         found_none = parameter_value is None</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="o">.</span><span class="n">frequency</span>
+
+    <span class="c1">##############################################</span>
+
+<div class="viewcode-block" id="PulseMixin.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.PulseMixin.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># Fixme: to func?</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;PULSE(&#39;</span> <span class="o">+</span>
+                <span class="n">join_list</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pulsed_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">rise_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fall_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pulse_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">phase</span><span class="p">))</span> <span class="o">+</span>
+                <span class="s1">&#39;)&#39;</span><span class="p">)</span></div></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="ExponentialMixin"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.ExponentialMixin">[docs]</a><span class="k">class</span> <span class="nc">ExponentialMixin</span><span class="p">(</span><span class="n">SourceMixinAbc</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a Exponential waveform.</span>
+
+<span class="sd">    Nomenclature:</span>
+
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | Name + Parameter          + Default Value + Units |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | V1   + Initial value      +               + V, A  |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | V2   + pulsed value       +               + V, A  |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | Td1  + rise delay time    + 0.0           + sec   |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | tau1 + rise time constant + Tstep         + sec   |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | Td2  + fall delay time    + Td1+Tstep     + sec   |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | tau2 + fall time constant + Tstep         + sec   |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+
+<span class="sd">    Spice Syntax::</span>
+
+<span class="sd">        EXP ( V1 V2 TD1 TAU1 TD2 TAU2 )</span>
+
+<span class="sd">    The shape of the waveform is described by the following formula:</span>
+
+<span class="sd">    Let V21 = V2 - V1 and V12 = V1 - V2.</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        V(t) = \begin{cases}</span>
+<span class="sd">          V_1 &amp; \text{if}\ 0 \leq t &lt; T_{d1}, \\</span>
+<span class="sd">          V_1 + V_{21} ( 1 − e^{-\frac{t-T_{d1}}{\tau_1}} )</span>
+<span class="sd">          &amp; \text{if}\ T_{d1} \leq t &lt; T_{d2}, \\</span>
+<span class="sd">          V_1 + V_{21} ( 1 − e^{-\frac{t-T_{d1}}{\tau_1}} ) + V_{12} ( 1 − e^{-\frac{t-T_{d2}}{\tau_2}} )</span>
+<span class="sd">          &amp; \text{if}\ T_{d2} \leq t &lt; T_{stop}</span>
+<span class="sd">        \end{cases}</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">initial_value</span><span class="p">,</span> <span class="n">pulsed_value</span><span class="p">,</span>
+                 <span class="n">rise_delay_time</span><span class="o">=.</span><span class="mi">0</span><span class="p">,</span> <span class="n">rise_time_constant</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">fall_delay_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fall_time_constant</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="c1"># Fixme: default</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__as_unit__</span><span class="p">(</span><span class="n">initial_value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pulsed_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__as_unit__</span><span class="p">(</span><span class="n">pulsed_value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rise_delay_time</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">rise_delay_time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rise_time_constant</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">rise_time_constant</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fall_delay_time</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">fall_delay_time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fall_time_constant</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">fall_time_constant</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+<div class="viewcode-block" id="ExponentialMixin.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.ExponentialMixin.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># Fixme: to func?</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;EXP(&#39;</span> <span class="o">+</span>
+                <span class="n">join_list</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pulsed_value</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">rise_delay_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rise_time_constant</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">fall_delay_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fall_time_constant</span><span class="p">,</span>
+                       <span class="p">))</span> <span class="o">+</span>
+                <span class="s1">&#39;)&#39;</span><span class="p">)</span></div></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="PieceWiseLinearMixin"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.PieceWiseLinearMixin">[docs]</a><span class="k">class</span> <span class="nc">PieceWiseLinearMixin</span><span class="p">(</span><span class="n">SourceMixinAbc</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a Piece-Wise Linear waveform.</span>
+
+<span class="sd">    Spice Syntax::</span>
+
+<span class="sd">        PWL( T1 V1 &lt;T2 V2 T3 V3 T4 V4 ... &gt; ) &lt;r=value&gt; &lt;td=value&gt;</span>
+
+<span class="sd">    Each pair of values (Ti , Vi) specifies that the value of the source is Vi (in Volts or Amps) at</span>
+<span class="sd">    time = Ti . The value of the source at intermediate values of time is determined by using linear</span>
+<span class="sd">    interpolation on the input values. The parameter r determines a repeat time point. If r is not</span>
+<span class="sd">    given, the whole sequence of values (Ti , Vi ) is issued once, then the output stays at its</span>
+<span class="sd">    final value. If r = 0, the whole sequence from time = 0 to time = Tn is repeated forever. If r =</span>
+<span class="sd">    10ns, the sequence between 10ns and 50ns is repeated forever. the r value has to be one of the</span>
+<span class="sd">    time points T1 to Tn of the PWL sequence. If td is given, the whole PWL sequence is delayed by a</span>
+<span class="sd">    delay time time = td. The current source still needs to be patched, td and r are not yet</span>
+<span class="sd">    available.</span>
+
+<span class="sd">    `values` should be given as a list of (`Time`, `Value`)-tuples, e.g.::</span>
+
+<span class="sd">        PieceWiseLinearVoltageSource(</span>
+<span class="sd">            circuit,</span>
+<span class="sd">            &#39;pwl1&#39;, &#39;1&#39;, &#39;0&#39;,</span>
+<span class="sd">            values=[(0, 0), (10@u_ms, 0), (11@u_ms, 5@u_V), (20@u_ms, 5@u_V)],</span>
+<span class="sd">        )</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">repeate_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">delay_time</span><span class="o">=.</span><span class="mi">0</span><span class="p">):</span>
+
+        <span class="c1"># Fixme: default</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(([</span><span class="n">as_s</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__as_unit__</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span> <span class="k">for</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="ow">in</span> <span class="n">values</span><span class="p">),</span> <span class="p">[])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repeate_time</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">repeate_time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">delay_time</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+<div class="viewcode-block" id="PieceWiseLinearMixin.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.PieceWiseLinearMixin.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># Fixme: to func?</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;PWL(&#39;</span> <span class="o">+</span>
+                <span class="n">join_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">+</span>
+                <span class="s1">&#39; &#39;</span> <span class="o">+</span>
+                <span class="n">join_dict</span><span class="p">({</span><span class="s1">&#39;r&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">repeate_time</span><span class="p">,</span> <span class="s1">&#39;td&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span><span class="p">})</span> <span class="o">+</span> <span class="c1"># OrderedDict(</span>
+                <span class="s1">&#39;)&#39;</span><span class="p">)</span></div></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="SingleFrequencyFMMixin"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.SingleFrequencyFMMixin">[docs]</a><span class="k">class</span> <span class="nc">SingleFrequencyFMMixin</span><span class="p">(</span><span class="n">SourceMixinAbc</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a Single-Frequency FM waveform.</span>
+
+<span class="sd">    Spice Syntax::</span>
+
+<span class="sd">        SFFM (VO VA FC MDI FS )</span>
+
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+<span class="sd">   | Name + Parameter         + Default Value + Units |</span>
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+<span class="sd">   | Vo   + offset            +               + V, A  |</span>
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+<span class="sd">   | Va   + amplitude         +               + V, A  |</span>
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+<span class="sd">   | Fc   + carrier frequency + 1 / Tstop     + Hz    |</span>
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+<span class="sd">   | Mdi  + modulation index  +               +       |</span>
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+<span class="sd">   | Fs   + signal frequency  + 1 / Tstop     + Hz    |</span>
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+
+<span class="sd">    The shape of the waveform is described by the following equation:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        V(t) = V_o + V_a \sin (2\pi F_c\, t + M_{di} \sin (2\pi F_s\,t))</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">carrier_frequency</span><span class="p">,</span> <span class="n">modulation_index</span><span class="p">,</span> <span class="n">signal_frequency</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__as_unit__</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__as_unit__</span><span class="p">(</span><span class="n">amplitude</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">carrier_frequency</span> <span class="o">=</span> <span class="n">as_Hz</span><span class="p">(</span><span class="n">carrier_frequency</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modulation_index</span> <span class="o">=</span> <span class="n">modulation_index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal_frequency</span> <span class="o">=</span> <span class="n">as_Hz</span><span class="p">(</span><span class="n">signal_frequency</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+<div class="viewcode-block" id="SingleFrequencyFMMixin.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.SingleFrequencyFMMixin.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># Fixme: to func?</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;SFFM(&#39;</span> <span class="o">+</span>
+                <span class="n">join_list</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">carrier_frequency</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">modulation_index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_frequency</span><span class="p">))</span> <span class="o">+</span>
+                <span class="s1">&#39;)&#39;</span><span class="p">)</span></div></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="AmplitudeModulatedMixin"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.AmplitudeModulatedMixin">[docs]</a><span class="k">class</span> <span class="nc">AmplitudeModulatedMixin</span><span class="p">(</span><span class="n">SourceMixinAbc</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a Amplitude Modulated source.</span>
+
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+<span class="sd">    | Name + Parameter            + Default Value + Units |</span>
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+<span class="sd">    | Vo   + offset               +               + V, A  |</span>
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+<span class="sd">    | Va   + amplitude            +               + V, A  |</span>
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+<span class="sd">    | Mf   + modulating frequency +               + Hz    |</span>
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+<span class="sd">    | Fc   + carrier frequency    + 1 / Tstop     + Hz    |</span>
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+<span class="sd">    | Td   + signal delay         +               + s     |</span>
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+
+<span class="sd">    Spice Syntax::</span>
+
+<span class="sd">        AM(VA VO MF FC TD)</span>
+
+<span class="sd">    The shape of the waveform is described by the following equation:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        V(t) = V_a (V_o + \sin (2\pi M_f\,t)) \sin (2\pi F_c\,t)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">modulating_frequency</span><span class="p">,</span> <span class="n">carrier_frequency</span><span class="p">,</span> <span class="n">signal_delay</span><span class="p">):</span>
+
+        <span class="c1"># Fixme: default</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__as_unit__</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__as_unit__</span><span class="p">(</span><span class="n">amplitude</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">carrier_frequency</span> <span class="o">=</span> <span class="n">as_Hz</span><span class="p">(</span><span class="n">carrier_frequency</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modulating_frequency</span> <span class="o">=</span> <span class="n">as_Hz</span><span class="p">(</span><span class="n">modulating_frequency</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal_delay</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">signal_delay</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+<div class="viewcode-block" id="AmplitudeModulatedMixin.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.AmplitudeModulatedMixin.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># Fixme: to func?</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;AM(&#39;</span> <span class="o">+</span>
+                <span class="n">join_list</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">carrier_frequency</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">modulating_frequency</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_delay</span><span class="p">))</span> <span class="o">+</span>
+                <span class="s1">&#39;)&#39;</span><span class="p">)</span></div></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="RandomMixin"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.RandomMixin">[docs]</a><span class="k">class</span> <span class="nc">RandomMixin</span><span class="p">(</span><span class="n">SourceMixinAbc</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a Random Voltage source.</span>
+
+<span class="sd">    The TRRANDOM option yields statistically distributed voltage values, derived from the ngspice</span>
+<span class="sd">    random number generator. These values may be used in the transient simulation directly within a</span>
+<span class="sd">    circuit, e.g. for generating a specific noise voltage, but especially they may be used in the</span>
+<span class="sd">    control of behavioral sources (B, E, G sources, voltage controllable A sources, capacitors,</span>
+<span class="sd">    inductors, or resistors) to simulate the circuit dependence on statistically varying device</span>
+<span class="sd">    parameters. A Monte-Carlo simulation may thus be handled in a single simulation run.</span>
+
+<span class="sd">    Spice Syntax::</span>
+
+<span class="sd">        TRRANDOM( TYPE TS &lt;TD &lt;PARAM1 &lt;PARAM2&gt; &gt; &gt;)</span>
+
+<span class="sd">    TYPE determines the random variates generated: 1 is uniformly distributed, 2 Gaussian, 3</span>
+<span class="sd">    exponential, 4 Poisson. TS is the duration of an individual voltage value. TD is a time delay</span>
+<span class="sd">    with 0 V output before the random voltage values start up. PARAM1 and PARAM2 depend on the type</span>
+<span class="sd">    selected.</span>
+
+<span class="sd">    +-------------+---------------+---------+-------------+---------+</span>
+<span class="sd">    | Type        + Parameter 1   + Default + Parameter 2 + Default |</span>
+<span class="sd">    +-------------+---------------+---------+-------------+---------+</span>
+<span class="sd">    | uniform     + range         + 1       + offset      + 0       |</span>
+<span class="sd">    +-------------+---------------+---------+-------------+---------+</span>
+<span class="sd">    | gaussian    + standard dev. + 1       + mean        + 0       |</span>
+<span class="sd">    +-------------+---------------+---------+-------------+---------+</span>
+<span class="sd">    | exponential + mean          + 1       + offset      + 0       |</span>
+<span class="sd">    +-------------+---------------+---------+-------------+---------+</span>
+<span class="sd">    | poisson     + lambda        + 1       + offset      + 0       |</span>
+<span class="sd">    +-------------+---------------+---------+-------------+---------+</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_type</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">time_delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parameter1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">parameter2</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+        <span class="c1"># Fixme: random_type and parameters</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">random_type</span> <span class="o">=</span> <span class="n">random_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_delay</span> <span class="o">=</span> <span class="n">as_s</span><span class="p">(</span><span class="n">time_delay</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameter1</span> <span class="o">=</span> <span class="n">parameter1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameter2</span> <span class="o">=</span> <span class="n">parameter2</span>
+
+    <span class="c1">##############################################</span>
+
+<div class="viewcode-block" id="RandomMixin.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.RandomMixin.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_type</span> <span class="o">==</span> <span class="s1">&#39;uniform&#39;</span><span class="p">:</span>
+            <span class="n">random_type</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_type</span> <span class="o">==</span> <span class="s1">&#39;exponential&#39;</span><span class="p">:</span>
+            <span class="n">random_type</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_type</span> <span class="o">==</span> <span class="s1">&#39;gaussian&#39;</span><span class="p">:</span>
+            <span class="n">random_type</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_type</span> <span class="o">==</span> <span class="s1">&#39;poisson&#39;</span><span class="p">:</span>
+            <span class="n">random_type</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Wrong random type </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">random_type</span><span class="p">))</span>
+
+        <span class="c1"># Fixme: to func?</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;TRRANDOM(&#39;</span> <span class="o">+</span>
+                <span class="n">join_list</span><span class="p">((</span><span class="n">random_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_delay</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">parameter1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter2</span><span class="p">))</span> <span class="o">+</span>
+                <span class="s1">&#39;)&#39;</span><span class="p">)</span></div></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="SinusoidalVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.SinusoidalVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">SinusoidalVoltageSource</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">,</span> <span class="n">VoltageSourceMixinAbc</span><span class="p">,</span> <span class="n">SinusoidalMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a sinusoidal waveform voltage source.</span>
+
+<span class="sd">    See :class:`SinusoidalMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">VoltageSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">SinusoidalMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">SinusoidalMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="SinusoidalCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.SinusoidalCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">SinusoidalCurrentSource</span><span class="p">(</span><span class="n">CurrentSource</span><span class="p">,</span> <span class="n">CurrentSourceMixinAbc</span><span class="p">,</span> <span class="n">SinusoidalMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a sinusoidal waveform current source.</span>
+
+<span class="sd">    See :class:`SinusoidalMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">CurrentSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">SinusoidalMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">SinusoidalMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="AcLine"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.AcLine">[docs]</a><span class="k">class</span> <span class="nc">AcLine</span><span class="p">(</span><span class="n">SinusoidalVoltageSource</span><span class="p">):</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="n">rms_voltage</span><span class="o">=</span><span class="mi">230</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span>
+                         <span class="n">amplitude</span><span class="o">=</span><span class="n">rms_to_amplitude</span><span class="p">(</span><span class="n">rms_voltage</span><span class="p">),</span>
+                         <span class="n">frequency</span><span class="o">=</span><span class="n">frequency</span><span class="p">)</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="PulseVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.PulseVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">PulseVoltageSource</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">,</span> <span class="n">VoltageSourceMixinAbc</span><span class="p">,</span> <span class="n">PulseMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a pulse waveform voltage source.</span>
+
+<span class="sd">    See :class:`PulseMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">VoltageSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">PulseMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">PulseMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="PulseCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.PulseCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">PulseCurrentSource</span><span class="p">(</span><span class="n">CurrentSource</span><span class="p">,</span> <span class="n">CurrentSourceMixinAbc</span><span class="p">,</span> <span class="n">PulseMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a pulse waveform current source.</span>
+
+<span class="sd">    See :class:`PulseMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">CurrentSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">PulseMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">PulseMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="ExponentialVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.ExponentialVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">ExponentialVoltageSource</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">,</span> <span class="n">VoltageSourceMixinAbc</span><span class="p">,</span> <span class="n">ExponentialMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a exponential waveform voltage source.</span>
+
+<span class="sd">    See :class:`ExponentialMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">VoltageSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">ExponentialMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">ExponentialMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="ExponentialCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.ExponentialCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">ExponentialCurrentSource</span><span class="p">(</span><span class="n">CurrentSource</span><span class="p">,</span> <span class="n">CurrentSourceMixinAbc</span><span class="p">,</span> <span class="n">ExponentialMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a exponential waveform current source.</span>
+
+<span class="sd">    See :class:`ExponentialMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">CurrentSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">ExponentialMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">ExponentialMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="PieceWiseLinearVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.PieceWiseLinearVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">PieceWiseLinearVoltageSource</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">,</span> <span class="n">VoltageSourceMixinAbc</span><span class="p">,</span> <span class="n">PieceWiseLinearMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a piece wise linear waveform voltage source.</span>
+
+<span class="sd">    See :class:`PieceWiseLinearMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">VoltageSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">PieceWiseLinearMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">PieceWiseLinearMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="PieceWiseLinearCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.PieceWiseLinearCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">PieceWiseLinearCurrentSource</span><span class="p">(</span><span class="n">CurrentSource</span><span class="p">,</span> <span class="n">CurrentSourceMixinAbc</span><span class="p">,</span> <span class="n">PieceWiseLinearMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a piece wise linear waveform current source.</span>
+
+<span class="sd">    See :class:`PieceWiseLinearMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">CurrentSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">PieceWiseLinearMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">PieceWiseLinearMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="SingleFrequencyFMVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.SingleFrequencyFMVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">SingleFrequencyFMVoltageSource</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">,</span> <span class="n">VoltageSourceMixinAbc</span><span class="p">,</span> <span class="n">SingleFrequencyFMMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a single frequency FM waveform voltage source.</span>
+
+<span class="sd">    See :class:`SingleFrequencyFMMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">VoltageSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">SingleFrequencyFMMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">SingleFrequencyFMMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="SingleFrequencyFMCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.SingleFrequencyFMCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">SingleFrequencyFMCurrentSource</span><span class="p">(</span><span class="n">CurrentSource</span><span class="p">,</span> <span class="n">CurrentSourceMixinAbc</span><span class="p">,</span> <span class="n">SingleFrequencyFMMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a single frequency FM waveform current source.</span>
+
+<span class="sd">    See :class:`SingleFrequencyFMMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">CurrentSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">SingleFrequencyFMMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">SingleFrequencyFMMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="AmplitudeModulatedVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.AmplitudeModulatedVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">AmplitudeModulatedVoltageSource</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">,</span> <span class="n">VoltageSourceMixinAbc</span><span class="p">,</span> <span class="n">AmplitudeModulatedMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a amplitude modulated waveform voltage source.</span>
+
+<span class="sd">    See :class:`AmplitudeModulatedMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">VoltageSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">AmplitudeModulatedMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">AmplitudeModulatedMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="AmplitudeModulatedCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.AmplitudeModulatedCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">AmplitudeModulatedCurrentSource</span><span class="p">(</span><span class="n">CurrentSource</span><span class="p">,</span> <span class="n">CurrentSourceMixinAbc</span><span class="p">,</span> <span class="n">AmplitudeModulatedMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a amplitude modulated waveform current source.</span>
+
+<span class="sd">    See :class:`AmplitudeModulatedMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">CurrentSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">AmplitudeModulatedMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">AmplitudeModulatedMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="RandomVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.RandomVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">RandomVoltageSource</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">,</span> <span class="n">VoltageSourceMixinAbc</span><span class="p">,</span> <span class="n">RandomMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a random waveform voltage source.</span>
+
+<span class="sd">    See :class:`RandomMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">VoltageSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">RandomMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">RandomMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+
+<span class="c1">####################################################################################################</span>
+
+<div class="viewcode-block" id="RandomCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.RandomCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">RandomCurrentSource</span><span class="p">(</span><span class="n">CurrentSource</span><span class="p">,</span> <span class="n">CurrentSourceMixinAbc</span><span class="p">,</span> <span class="n">RandomMixin</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class implements a random waveform current source.</span>
+
+<span class="sd">    See :class:`RandomMixin` for documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">CurrentSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+        <span class="n">RandomMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1">##############################################</span>
+
+    <span class="n">format_spice_parameters</span> <span class="o">=</span> <span class="n">RandomMixin</span><span class="o">.</span><span class="n">format_spice_parameters</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Fabrice Salvaire
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+  
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://stats.fabrice-salvaire.fr/";
+    _paq.push(['setTrackerUrl', u+'kiwi']);
+    _paq.push(['setSiteId', 6]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'kiwi.js';
+  s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="https://stats.fabrice-salvaire.fr/kiwi?idsite=6&rec=1" style="border:0;" alt="" /></p></noscript>
+
+
+</body>
+</html>

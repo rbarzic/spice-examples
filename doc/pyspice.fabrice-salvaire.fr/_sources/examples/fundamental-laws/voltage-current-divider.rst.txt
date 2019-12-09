@@ -1,0 +1,136 @@
+
+.. include:: /project-links.txt
+.. include:: /abbreviation.txt
+
+
+
+.. getthecode:: voltage-current-divider.py
+    :language: python3
+    :hidden:
+
+=============================
+ Voltage and Current Divider
+=============================
+This circuit is a fundamental block in electronic that permits to scale a voltage by an
+impedance ratio:
+
+.. image:: voltage-divider.png
+    :align: center
+
+The relation between the input and ouput voltage is:
+
+.. math::
+
+    \frac{V_{out}}{V_{in}} = \frac{R_2}{R_1 + R_2}
+
+This equation holds for any impedances like resistance, capacitance, inductance, etc.
+
+.. code-block:: py3
+
+    
+    
+    import PySpice.Logging.Logging as Logging
+    logger = Logging.setup_logging()
+    
+    
+    from PySpice.Spice.Netlist import Circuit
+    from PySpice.Unit import *
+    
+    
+    circuit = Circuit('Voltage Divider')
+    
+    circuit.V('input', 1, circuit.gnd, 10@u_V)
+    circuit.R(1, 1, 2, 2@u_kΩ)
+    circuit.R(2, 2, circuit.gnd, 1@u_kΩ)
+    
+    simulator = circuit.simulator(temperature=25, nominal_temperature=25)
+    analysis = simulator.operating_point()
+    
+    for node in analysis.nodes.values():
+        print('Node {}: {:5.2f} V'.format(str(node), float(node))) # Fixme: format value + unit
+
+
+.. code-block:: none
+
+    [1;32m2019-03-10 18:51:01,281[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.531 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,282[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.531 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,283[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.531 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,283[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.531 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,284[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.531 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,285[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.555 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,285[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.676 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,287[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.836 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,287[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.898 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,288[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.930 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,289[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.980 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,290[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  823.980 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,294[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.238 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,296[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.238 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,297[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.238 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,304[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.441 MB, limit =  905.410 MB
+    
+    Node 2:  3.33 V
+    Node 1: 10.00 V
+    
+
+Similarly we can build a circuit that scale a current by an impedance ratio:
+
+.. image:: current-divider.png
+    :align: center
+
+The relation between the input and ouput current is:
+
+.. math::
+
+    \frac{I_{out}}{I_{in}} = \frac{R_1}{R_1 + R_2}
+
+Note the role of R1 and R2 is exchanged.
+
+This equation holds for any impedances like resistance, capacitance, inductance, etc.
+
+.. code-block:: py3
+
+    
+    
+    circuit = Circuit('Current Divider')
+    
+    circuit.I('input', 1, circuit.gnd, 1@u_A) # Fixme: current value
+    circuit.R(1, 1, circuit.gnd, 2@u_kΩ)
+    circuit.R(2, 1, circuit.gnd, 1@u_kΩ)
+    
+    for resistance in (circuit.R1, circuit.R2):
+        resistance.minus.add_current_probe(circuit) # to get positive value
+    
+    simulator = circuit.simulator(temperature=25, nominal_temperature=25)
+    analysis = simulator.operating_point()
+    
+    # Fixme: current over resistor
+    for node in analysis.branches.values():
+        print('Node {}: {:5.2f} A'.format(str(node), float(node))) # Fixme: format value + unit
+
+
+.. code-block:: none
+
+    [1;32m2019-03-10 18:51:01,328[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.828 MB, limit =  905.410 MB
+    
+    [1;32m2019-03-10 18:51:01,330[0m - [1;34mPySpice.Spice.NgSpice.Shared.NgSpiceShared._send_char[0m - [1;31mERROR[0m - Warning - approaching max data size: current size =  824.828 MB, limit =  905.410 MB
+    
+    Node vr1_minus:  0.33 A
+    Node vr2_minus:  0.67 A
+    
+

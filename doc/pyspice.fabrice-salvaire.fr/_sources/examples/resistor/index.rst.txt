@@ -1,0 +1,14 @@
+
+
+##########
+ Resistor
+##########
+
+This section has 2 documents.
+
+.. toctree::
+  :maxdepth: 1
+
+  resistor-bridge.rst
+
+  voltage-divider.rst

@@ -1,0 +1,1517 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>11.1.9.6. Netlist &mdash; PySpice @VERSION@ documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../../../_static/getthecode.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/PySpice.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="11.1.9.7. NgSpice" href="NgSpice.html" />
+    <link rel="prev" title="11.1.9.5. Library" href="Library.html" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  },
+  "theme": "classic",
+  "position": "bottom-right"
+})});
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PySpice
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                @VERSION@
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">1. Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#what-is-pyspice">1.1. What is PySpice ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-is-pyspice-licensed">1.2. How is PySpice licensed ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#are-there-some-papers-or-talks-about-pyspice">1.3. Are there some papers or talks about PySpice ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#going-further-with-pyspice">1.4. Going further with PySpice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-can-pyspice-be-used-for-learning">1.5. How can PySpice be used for learning ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#which-platforms-are-supported-by-pyspice">1.6. Which platforms are supported by PySpice ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-to-install-pyspice">1.7. How to install PySpice ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-does-pyspice-differ-from-simulator-like-ltspice">1.8. How does PySpice differ from simulator like LTspice ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-can-a-non-gui-simulator-be-helpful">1.9. How can a non-GUI simulator be helpful ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#what-are-the-benefits-of-pyspice-over-ngspice-xyce">1.10. What are the benefits of PySpice over Ngspice / Xyce ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-is-pyspice-interfaced-with-ngspice">1.11. How is PySpice interfaced with Ngspice ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-is-pyspice-interfaced-with-xyce">1.12. How is PySpice interfaced with Xyce ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-is-the-netlist-defined">1.13. How is the netlist defined ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#can-i-run-ngspice-using-interpreter-commands">1.14. Can I run Ngspice using interpreter commands ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-are-spice-libraries-handled">1.15. How are Spice libraries handled ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#how-are-units-handled">1.16. How are units handled ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#which-version-of-python-is-required">1.17. Which version of Python is required ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#which-version-of-ngspice-is-required">1.18. Which version of Ngspice is required ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#which-version-of-xyce-is-required">1.19. Which version of Xyce is required ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#which-flavours-of-spice-are-supported">1.20. Which flavours of SPICE are supported ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#what-else-should-you-be-aware-of">1.21. What else should you be aware of ?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../news.html">2. News</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v1-3-0-development-release">2.1. V1.3.0 (development release)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v1-2-0-production-release-2018-06-07">2.2. V1.2.0 (production release) 2018-06-07</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v1-1-0-2017-09-06">2.3. V1.1.0 2017-09-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v1-0-0-2017-09-06">2.4. V1.0.0 2017-09-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v0-4-2">2.5. V0.4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v0-4-0-2017-07-31">2.6. V0.4.0 2017-07-31</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v0-3-2-2017-02-22">2.7. V0.3.2 2017-02-22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v0-3-1-2017-02-22">2.8. V0.3.1 2017-02-22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v0-3-0-2015-12-08">2.9. V0.3.0 2015-12-08</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../news.html#v0-2014-03-21">2.10. V0 2014-03-21</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap.html">3. Roadmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../roadmap.html#v1-3">3.1. V1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../roadmap.html#v2">3.2. V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../roadmap.html#some-ideas-for-the-future">3.3. Some ideas for the future</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">4. Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#on-windows">4.1. On Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#on-linux">4.2. On Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#on-osx">4.3. On OSX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#how-to-get-the-examples">4.4. How to get the Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-from-pypi-repository">4.5. Installation from PyPi Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#install-a-more-recent-version-from-github">4.6. Install a more recent version from Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-from-source">4.7. Installation from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#dependencies">4.8. Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#ngspice-compilation">4.9. Ngspice Compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#how-to-get-xyce">4.10. How to get Xyce ?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators.html">5. Simulators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../simulators.html#id1">5.1. Ngspice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../simulators.html#id2">5.2. Xyce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../simulators.html#gnucap">5.3. Gnucap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../simulators.html#qucs">5.4. Qucs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">6. User FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-get-help-or-report-an-issue">6.1. How to get help or report an issue ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-typeset-u-k-or-u-v-in-python-code">6.2. How to typeset <code class="code docutils literal notranslate"><span class="pre">u_kΩ</span></code> or <code class="code docutils literal notranslate"><span class="pre">u_μV</span></code> in Python code ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-perform-division-with-units">6.3. How to perform division with units ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#is-unit-api-well-tested">6.4. Is unit API well tested ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#is-ground-node-required">6.5. Is ground node required ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-deal-with-spice-parameters-that-clash-with-python-keywords">6.6. How to deal with SPICE parameters that clash with Python keywords ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-pass-raw-spice-command">6.7. How to pass raw SPICE command ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-set-the-ngspice-library-path">6.8. How to set the Ngspice library path ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-set-the-ngspice-executable-path">6.9. How to set the Ngspice executable path ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-set-the-xyce-path">6.10. How to set the Xyce path ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-to-set-the-simulator">6.11. How to set the simulator ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#is-xyce-100-compatible-with-spice">6.12. Is Xyce 100% compatible with SPICE ?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example-introduction.html">7. Introduction to the Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-introduction.html#how-to-learn-python">7.1. How to Learn Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-introduction.html#how-to-run-these-examples">7.2. How to Run these Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-introduction.html#how-to-write-a-netlist">7.3. How to Write a Netlist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">8. Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/advanced-usages/index.html">8.1. Advanced Usages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/advanced-usages/internal-device-parameters.html">8.1.1. Internal Device Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/advanced-usages/netlist-manipulations.html">8.1.2. Netlist Manipulations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/basic-usages/index.html">8.2. Basic Usages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/basic-usages/subcircuit.html">8.2.1. How to Use SubCircuit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/data-analysis/index.html">8.3. Data Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/data-analysis/fft.html">8.3.1. Fast Fourier Transform</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/diode/index.html">8.4. Diode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/RingModulator.html">8.4.1. Ringmodulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/diode-characteristic-curve.html">8.4.2. Diode Characteristic Curve</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/diode/diode-characteristic-curve.html#theory">8.4.2.1. Theory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/diode/diode-characteristic-curve.html#simulation">8.4.2.2. Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/diode-recovery-time.html">8.4.3. Diode Recovery Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/rectification.html">8.4.4. Rectification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/ring-modulator.html">8.4.5. Ring Modulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/voltage-multiplier.html">8.4.6. Voltage Multiplier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/zener-characteristic-curve.html">8.4.7. Zener Characteristic Curve</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/electricity/index.html">8.5. Electricity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/electricity/three-phase.html">8.5.1. Three-phased Current: Y and Delta configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/filter/index.html">8.6. Filter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/filter/low-pass-rc-filter.html">8.6.1. Low Pass Rc Filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/filter/rlc-filter.html">8.6.2. RLC Filter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/fundamental-laws/index.html">8.7. Kirchhoff’s circuit laws</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/fundamental-laws/index.html#ohm-s-law">8.8. Ohm’s Law</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/fundamental-laws/millman-theorem.html">8.8.1. Millman’s theorem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/fundamental-laws/thévenin-norton-theorem.html">8.8.2. Thévenin and Norton Theorem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/fundamental-laws/voltage-current-divider.html">8.8.3. Voltage and Current Divider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ngspice-shared/external-source.html">8.9. Simulation using External Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ngspice-shared/ngspice-interpreter.html">8.10. NgSpice Interpreter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/operational-amplifier/index.html">8.11. Operational Amplifier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/operational-amplifier/OperationalAmplifier.html">8.11.1. Operationalamplifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/operational-amplifier/astable.html">8.11.2. Astable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/operational-amplifier/operational-amplifier.html">8.11.3. Operational Amplifier</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/passive/index.html">8.12. Passive</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/passive/capacitor-inductor.html">8.12.1. Capacitor Inductor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/power-supplies/index.html">8.13. Power Supplies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/power-supplies/HP54501A.html">8.13.1. Hp54501A</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/power-supplies/capacitive-half-wave-rectification-post-zener.html">8.13.2. Capacitive Half Wave Rectification Post Zener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/power-supplies/capacitive-half-wave-rectification-pre-zener.html">8.13.3. Capacitive Half Wave Rectification Pre Zener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/power-supplies/hp54501a-cem.html">8.13.4. CEM Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/diode/rectification.html">8.4.4. Rectification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/relay/index.html">8.14. Relay</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/relay/relay.html">8.14.1. Relay drived by a bipolar transistor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/resistor/index.html">8.15. Resistor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/resistor/resistor-bridge.html">8.15.1. Resistor Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/resistor/voltage-divider.html">8.15.2. Voltage Divider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/spice-parser/bootstrap-example.html">8.16. Spice Netlist Parser Bootstrap Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/spice-parser/kicad-example.html">8.17. Kicad Netlist Parser Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/switched-power-supplies/index.html">8.18. Switched Power Supplies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/switched-power-supplies/buck-converter.html">8.18.1. Buck Converter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/transformer/index.html">8.19. Transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/transformer/Transformer.html">8.19.1. Transformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/transformer/transformer-example.html">8.19.2. Transformer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/transistor/index.html">8.20. Transistor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/transistor/ac-coupled-amplifier.html">8.20.1. AC Coupled Amplifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/transistor/transistor.html">8.20.2. Bipolar Transistor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/transmission-lines/index.html">8.21. Transmission Lines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/transmission-lines/time-delay.html">8.21.1. Time Delay</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example-whish-list.html">9. Example Wish List</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#operational-points">9.1. Operational Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#amplifier">9.2. Amplifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#diode">9.3. Diode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#filters">9.4. Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#inductors">9.5. Inductors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#operational-amplifier">9.6. Operational Amplifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#oscillators">9.7. Oscillators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#power-supplies">9.8. Power Supplies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#switching-power-supplies">9.9. Switching Power Supplies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#telecommunication">9.10. Telecommunication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#transistor">9.11. Transistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#mosfet">9.12. MOSFET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example-whish-list.html#scr">9.13. SCR</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design-notes.html">10. Design Notes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../reference-manual.html">11. API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../PySpice.html">11.1. PySpice</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Config.html">11.1.1. Config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Config/ConfigInstall.html">11.1.1.1. ConfigInstall</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../DeviceLibrary.html">11.1.2. DeviceLibrary</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Doc.html">11.1.3. Doc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Doc/ExampleTools.html">11.1.3.1. ExampleTools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Logging.html">11.1.4. Logging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Logging/Logging.html">11.1.4.1. Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Math.html">11.1.5. Math</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Math/Calculus.html">11.1.5.1. Calculus</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Physics.html">11.1.6. Physics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Physics/MaterialProperties.html">11.1.6.1. MaterialProperties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Physics/PhysicalConstants.html">11.1.6.2. PhysicalConstants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Physics/Resistor.html">11.1.6.3. Resistor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Physics/SemiConductor.html">11.1.6.4. SemiConductor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Plot.html">11.1.7. Plot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Plot/BodeDiagram.html">11.1.7.1. BodeDiagram</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Probe.html">11.1.8. Probe</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Probe/Plot.html">11.1.8.1. Plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Probe/WaveForm.html">11.1.8.2. WaveForm</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../Spice.html">11.1.9. Spice</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="BasicElement.html">11.1.9.1. BasicElement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ElementParameter.html">11.1.9.2. ElementParameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Expression.html">11.1.9.3. Expression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="HighLevelElement.html">11.1.9.4. HighLevelElement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Library.html">11.1.9.5. Library</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">11.1.9.6. Netlist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="NgSpice.html">11.1.9.7. NgSpice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Parser.html">11.1.9.8. Parser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RawFile.html">11.1.9.9. RawFile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Simulation.html">11.1.9.10. Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Xyce.html">11.1.9.11. Xyce</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Tools.html">11.1.10. Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tools/EnumFactory.html">11.1.10.1. EnumFactory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tools/File.html">11.1.10.2. File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tools/Path.html">11.1.10.3. Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tools/StringTools.html">11.1.10.4. StringTools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Unit.html">11.1.11. Unit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Unit/SiUnits.html">11.1.11.1. SiUnits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Unit/Unit.html">11.1.11.2. Unit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference-manual.html#indexes">11.2. Indexes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development.html">12. Development &amp; Community</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#how-you-can-help">12.1. How you can help ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#contributors">12.2. Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../how-to-refer.html">13. How to Refer to PySpice ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../donate.html">14. How to Help Further ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../donate.html#professional-support">14.1. Professional Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../on-the-web.html">15. PySpice on the Web</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../on-the-web.html#articles">15.1. Articles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../on-the-web.html#on-github">15.2. On Github</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../related-projects.html">16. Related Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../related-projects.html#pycpusimulator">16.1. PyCpuSimulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../related-projects.html#ahkab">16.2. Ahkab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../related-projects.html#lcapy">16.3. Lcapy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../related-projects.html#other-projects">16.4. Other Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bibliography.html">17. Bibliography</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../bibliography.html#related-articles">17.1. Related articles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../bibliography.html#spice-references">17.2. SPICE References</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PySpice</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../reference-manual.html">11. API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../PySpice.html">11.1. PySpice</a> &raquo;</li>
+        
+          <li><a href="../Spice.html">11.1.9. Spice</a> &raquo;</li>
+        
+      <li>11.1.9.6. Netlist</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/api/PySpice/Spice/Netlist.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-PySpice.Spice.Netlist">
+<span id="netlist"></span><h1>11.1.9.6. Netlist<a class="headerlink" href="#module-PySpice.Spice.Netlist" title="Permalink to this headline">¶</a></h1>
+<p>This modules implements circuit and subcircuit.</p>
+<p>The definition of a netlist follows the same conventions as SPICE. For example this SPICE netlist
+is translated to Python like this:</p>
+<div class="highlight-spice notranslate"><div class="highlight"><pre><span></span>.title Voltage Divider
+Vinput in 0 10V
+R1 in out 9k
+R2 out 0 1k
+.end
+</pre></div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span> <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Voltage Divider&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+ <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>
+ <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>or as a class definition:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">VoltageDivider</span><span class="p">(</span><span class="n">Circuit</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Voltage Divider&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;10V&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The circuit attribute <code class="xref py py-attr docutils literal notranslate"><span class="pre">gnd</span></code> represents the ground of the circuit or subcircuit, usually set to
+0.</p>
+<p>We can get an element or a model using its name using these two possibilities:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span><span class="p">[</span><span class="s1">&#39;R1&#39;</span><span class="p">]</span> <span class="c1"># dictionary style</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R1</span>    <span class="c1"># attribute style</span>
+</pre></div>
+</div>
+<p>The dictionary style always works, but the attribute only works if it complies with the Python
+syntax, i.e. the element or model name is a valide attribute name (identifier), i.e. starting by a
+letter and not a keyword like ‘in’, cf. <a class="reference external" href="https://docs.python.org/2/reference/lexical_analysis.html">Python Language Reference</a>.</p>
+<p>We can update an element parameter like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span><span class="o">.</span><span class="n">R1</span><span class="o">.</span><span class="n">resistance</span> <span class="o">=</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To simulate the circuit, we must create a simulator instance using the <a class="reference internal" href="#PySpice.Spice.Netlist.Circuit.simulator" title="PySpice.Spice.Netlist.Circuit.simulator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Circuit.simulator()</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.AnyPinElement">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">AnyPinElement</code><span class="sig-paren">(</span><em>netlist</em>, <em>name</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#AnyPinElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.AnyPinElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.Element" title="PySpice.Spice.Netlist.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">PySpice.Spice.Netlist.Element</span></code></a></p>
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.AnyPinElement.copy_to">
+<code class="descname">copy_to</code><span class="sig-paren">(</span><em>netlist</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#AnyPinElement.copy_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.AnyPinElement.copy_to" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.Circuit">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">Circuit</code><span class="sig-paren">(</span><em>title</em>, <em>ground=0</em>, <em>global_nodes=()</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.Netlist" title="PySpice.Spice.Netlist.Netlist"><code class="xref py py-class docutils literal notranslate"><span class="pre">PySpice.Spice.Netlist.Netlist</span></code></a></p>
+<p>This class implements a cicuit netlist.</p>
+<p>To get the corresponding Spice netlist use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+<span class="o">...</span>
+<span class="nb">str</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Circuit.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><em>title=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.clone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Circuit.include">
+<code class="descname">include</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.include"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.include" title="Permalink to this definition">¶</a></dt>
+<dd><p>Include a file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Circuit.parameter">
+<code class="descname">parameter</code><span class="sig-paren">(</span><em>name</em>, <em>expression</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a parameter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Circuit.simulator">
+<code class="descname">simulator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.simulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.simulator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Circuit.str">
+<code class="descname">str</code><span class="sig-paren">(</span><em>simulator=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the formatted desk.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Circuit.str_end">
+<code class="descname">str_end</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.str_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.str_end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.DeviceModel">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">DeviceModel</code><span class="sig-paren">(</span><em>name</em>, <em>modele_type</em>, <em>**parameters</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#DeviceModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.DeviceModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>This class implements a device model.</p>
+<p>Ngspice model types:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td rowspan="2">Code</td>
+<td rowspan="2">Model Type</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">R</td>
+<td rowspan="2">Semiconductor resistor model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">C</td>
+<td rowspan="2">Semiconductor capacitor model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">L</td>
+<td rowspan="2">Inductor model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">SW</td>
+<td rowspan="2">Voltage controlled switch</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">CSW</td>
+<td rowspan="2">Current controlled switch</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">URC</td>
+<td rowspan="2">Uniform distributed RC model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">LTRA</td>
+<td rowspan="2">Lossy transmission line model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">D</td>
+<td rowspan="2">Diode model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">NPN</td>
+<td rowspan="2">NPN BJT model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">PNP</td>
+<td rowspan="2">PNP BJT model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">NJF</td>
+<td rowspan="2">N-channel JFET model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">PJF</td>
+<td rowspan="2">P-channel JFET model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">NMOS</td>
+<td rowspan="2">N-channel MOSFET model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">PMOS</td>
+<td rowspan="2">P-channel MOSFET model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">NMF</td>
+<td rowspan="2">N-channel MESFET model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">PMF</td>
+<td rowspan="2">P-channel MESFET model</td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.DeviceModel.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#DeviceModel.clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.DeviceModel.clone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.DeviceModel.model_type">
+<code class="descname">model_type</code><a class="headerlink" href="#PySpice.Spice.Netlist.DeviceModel.model_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.DeviceModel.name">
+<code class="descname">name</code><a class="headerlink" href="#PySpice.Spice.Netlist.DeviceModel.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.DeviceModel.parameters">
+<code class="descname">parameters</code><a class="headerlink" href="#PySpice.Spice.Netlist.DeviceModel.parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.Element">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">Element</code><span class="sig-paren">(</span><em>netlist</em>, <em>name</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>This class implements a base class for an element.</p>
+<p>It use a metaclass machinery for the declaration of the parameters.</p>
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Element.copy_to">
+<code class="descname">copy_to</code><span class="sig-paren">(</span><em>element</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element.copy_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element.copy_to" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Element.detach">
+<code class="descname">detach</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element.detach"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element.detach" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Element.format_node_names">
+<code class="descname">format_node_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element.format_node_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element.format_node_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the formatted list of nodes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Element.format_spice_parameters">
+<code class="descname">format_spice_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the formatted list of parameters.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Element.name">
+<code class="descname">name</code><a class="headerlink" href="#PySpice.Spice.Netlist.Element.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Element.netlist">
+<code class="descname">netlist</code><a class="headerlink" href="#PySpice.Spice.Netlist.Element.netlist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Element.node_names">
+<code class="descname">node_names</code><a class="headerlink" href="#PySpice.Spice.Netlist.Element.node_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Element.nodes">
+<code class="descname">nodes</code><a class="headerlink" href="#PySpice.Spice.Netlist.Element.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Element.parameter_iterator">
+<code class="descname">parameter_iterator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element.parameter_iterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element.parameter_iterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>This iterator returns the parameter in the right order.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Element.pins">
+<code class="descname">pins</code><a class="headerlink" href="#PySpice.Spice.Netlist.Element.pins" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.ElementParameterMetaClass">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">ElementParameterMetaClass</code><span class="sig-paren">(</span><em>class_name</em>, <em>base_classes</em>, <em>namespace</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ElementParameterMetaClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ElementParameterMetaClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a></p>
+<p>Metaclass to customise the element classes when they are created and to register SPICE prefix.</p>
+<p>Element classes are of type <a class="reference internal" href="#PySpice.Spice.Netlist.ElementParameterMetaClass" title="PySpice.Spice.Netlist.ElementParameterMetaClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">ElementParameterMetaClass</span></code></a> instead of <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Resistor(metaclass=ElementParameterMetaClass):
+
+&lt;=&gt;
+
+Resistor = ElementParameterMetaClass(&#39;Foo&#39;, ...)
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.ElementParameterMetaClass.number_of_pins">
+<code class="descname">number_of_pins</code><a class="headerlink" href="#PySpice.Spice.Netlist.ElementParameterMetaClass.number_of_pins" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.ElementParameterMetaClass.number_of_positional_parameters">
+<code class="descname">number_of_positional_parameters</code><a class="headerlink" href="#PySpice.Spice.Netlist.ElementParameterMetaClass.number_of_positional_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.ElementParameterMetaClass.optional_parameters">
+<code class="descname">optional_parameters</code><a class="headerlink" href="#PySpice.Spice.Netlist.ElementParameterMetaClass.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.ElementParameterMetaClass.parameters_from_args">
+<code class="descname">parameters_from_args</code><a class="headerlink" href="#PySpice.Spice.Netlist.ElementParameterMetaClass.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.ElementParameterMetaClass.positional_parameters">
+<code class="descname">positional_parameters</code><a class="headerlink" href="#PySpice.Spice.Netlist.ElementParameterMetaClass.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.ElementParameterMetaClass.spice_to_parameters">
+<code class="descname">spice_to_parameters</code><a class="headerlink" href="#PySpice.Spice.Netlist.ElementParameterMetaClass.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.FixedPinElement">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">FixedPinElement</code><span class="sig-paren">(</span><em>netlist</em>, <em>name</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#FixedPinElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.FixedPinElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.Element" title="PySpice.Spice.Netlist.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">PySpice.Spice.Netlist.Element</span></code></a></p>
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.FixedPinElement.copy_to">
+<code class="descname">copy_to</code><span class="sig-paren">(</span><em>netlist</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#FixedPinElement.copy_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.FixedPinElement.copy_to" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.NPinElement">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">NPinElement</code><span class="sig-paren">(</span><em>netlist</em>, <em>name</em>, <em>nodes</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#NPinElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.NPinElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.Element" title="PySpice.Spice.Netlist.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">PySpice.Spice.Netlist.Element</span></code></a></p>
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.NPinElement.copy_to">
+<code class="descname">copy_to</code><span class="sig-paren">(</span><em>netlist</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#NPinElement.copy_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.NPinElement.copy_to" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.Netlist">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">Netlist</code><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>This class implements a base class for a netlist.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This class is completed with element shortcuts when the module is loaded.</p>
+</div>
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.A">
+<code class="descname">A</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.A" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.AcLine">
+<code class="descname">AcLine</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.AcLine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.AmplitudeModulatedCurrentSource">
+<code class="descname">AmplitudeModulatedCurrentSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.AmplitudeModulatedCurrentSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.AmplitudeModulatedVoltageSource">
+<code class="descname">AmplitudeModulatedVoltageSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.AmplitudeModulatedVoltageSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.B">
+<code class="descname">B</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.B" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.BJT">
+<code class="descname">BJT</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.BJT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.BehavioralCapacitor">
+<code class="descname">BehavioralCapacitor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.BehavioralCapacitor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.BehavioralInductor">
+<code class="descname">BehavioralInductor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.BehavioralInductor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.BehavioralResistor">
+<code class="descname">BehavioralResistor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.BehavioralResistor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.BehavioralSource">
+<code class="descname">BehavioralSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.BehavioralSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.BipolarJunctionTransistor">
+<code class="descname">BipolarJunctionTransistor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.BipolarJunctionTransistor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.C">
+<code class="descname">C</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.C" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.CCCS">
+<code class="descname">CCCS</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.CCCS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.CCS">
+<code class="descname">CCS</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.CCS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.CCVS">
+<code class="descname">CCVS</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.CCVS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.Capacitor">
+<code class="descname">Capacitor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.Capacitor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.CoupledInductor">
+<code class="descname">CoupledInductor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.CoupledInductor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.CoupledMulticonductorLine">
+<code class="descname">CoupledMulticonductorLine</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.CoupledMulticonductorLine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.CurrentControlledCurrentSource">
+<code class="descname">CurrentControlledCurrentSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.CurrentControlledCurrentSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.CurrentControlledSwitch">
+<code class="descname">CurrentControlledSwitch</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.CurrentControlledSwitch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.CurrentControlledVoltageSource">
+<code class="descname">CurrentControlledVoltageSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.CurrentControlledVoltageSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.CurrentSource">
+<code class="descname">CurrentSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.CurrentSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.D">
+<code class="descname">D</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.D" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.Diode">
+<code class="descname">Diode</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.Diode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.ExponentialCurrentSource">
+<code class="descname">ExponentialCurrentSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.ExponentialCurrentSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.ExponentialVoltageSource">
+<code class="descname">ExponentialVoltageSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.ExponentialVoltageSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.F">
+<code class="descname">F</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.F" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.GSSElement">
+<code class="descname">GSSElement</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.GSSElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.H">
+<code class="descname">H</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.H" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.I">
+<code class="descname">I</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.I" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.Inductor">
+<code class="descname">Inductor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.Inductor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.J">
+<code class="descname">J</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.J" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.JFET">
+<code class="descname">JFET</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.JFET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.JunctionFieldEffectTransistor">
+<code class="descname">JunctionFieldEffectTransistor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.JunctionFieldEffectTransistor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.K">
+<code class="descname">K</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.K" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.L">
+<code class="descname">L</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.L" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.LosslessTransmissionLine">
+<code class="descname">LosslessTransmissionLine</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.LosslessTransmissionLine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.LossyTransmission">
+<code class="descname">LossyTransmission</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.LossyTransmission" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.M">
+<code class="descname">M</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.M" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.MESFET">
+<code class="descname">MESFET</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.MESFET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.MOSFET">
+<code class="descname">MOSFET</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.MOSFET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.Mesfet">
+<code class="descname">Mesfet</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.Mesfet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.Mosfet">
+<code class="descname">Mosfet</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.Mosfet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.N">
+<code class="descname">N</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.N" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.NonLinearCurrentSource">
+<code class="descname">NonLinearCurrentSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.NonLinearCurrentSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.NonLinearVoltageSource">
+<code class="descname">NonLinearVoltageSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.NonLinearVoltageSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.O">
+<code class="descname">O</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.O" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.P">
+<code class="descname">P</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.P" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.PieceWiseLinearCurrentSource">
+<code class="descname">PieceWiseLinearCurrentSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.PieceWiseLinearCurrentSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.PieceWiseLinearVoltageSource">
+<code class="descname">PieceWiseLinearVoltageSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.PieceWiseLinearVoltageSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.PulseCurrentSource">
+<code class="descname">PulseCurrentSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.PulseCurrentSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.PulseVoltageSource">
+<code class="descname">PulseVoltageSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.PulseVoltageSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.Q">
+<code class="descname">Q</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.Q" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.R">
+<code class="descname">R</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.R" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.RandomCurrentSource">
+<code class="descname">RandomCurrentSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.RandomCurrentSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.RandomVoltageSource">
+<code class="descname">RandomVoltageSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.RandomVoltageSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.Resistor">
+<code class="descname">Resistor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.Resistor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.S">
+<code class="descname">S</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.S" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.SemiconductorCapacitor">
+<code class="descname">SemiconductorCapacitor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.SemiconductorCapacitor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.SemiconductorResistor">
+<code class="descname">SemiconductorResistor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.SemiconductorResistor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.SingleFrequencyFMCurrentSource">
+<code class="descname">SingleFrequencyFMCurrentSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.SingleFrequencyFMCurrentSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.SingleFrequencyFMVoltageSource">
+<code class="descname">SingleFrequencyFMVoltageSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.SingleFrequencyFMVoltageSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.SingleLossyTransmissionLine">
+<code class="descname">SingleLossyTransmissionLine</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.SingleLossyTransmissionLine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.SinusoidalCurrentSource">
+<code class="descname">SinusoidalCurrentSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.SinusoidalCurrentSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.SinusoidalVoltageSource">
+<code class="descname">SinusoidalVoltageSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.SinusoidalVoltageSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.SubCircuitElement">
+<code class="descname">SubCircuitElement</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.SubCircuitElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.TransmissionLine">
+<code class="descname">TransmissionLine</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.TransmissionLine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.U">
+<code class="descname">U</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.U" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.UniformDistributedRCLine">
+<code class="descname">UniformDistributedRCLine</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.UniformDistributedRCLine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.V">
+<code class="descname">V</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.V" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.VCCS">
+<code class="descname">VCCS</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.VCCS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.VCS">
+<code class="descname">VCS</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.VCS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.VCVS">
+<code class="descname">VCVS</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.VCVS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.VoltageControlledCurrentSource">
+<code class="descname">VoltageControlledCurrentSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.VoltageControlledCurrentSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.VoltageControlledSwitch">
+<code class="descname">VoltageControlledSwitch</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.VoltageControlledSwitch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.VoltageControlledVoltageSource">
+<code class="descname">VoltageControlledVoltageSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.VoltageControlledVoltageSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.VoltageSource">
+<code class="descname">VoltageSource</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.VoltageSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.W">
+<code class="descname">W</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.W" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.X">
+<code class="descname">X</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.X" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.XSpiceElement">
+<code class="descname">XSpiceElement</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.XSpiceElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.Y">
+<code class="descname">Y</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.Y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.Z">
+<code class="descname">Z</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.Z" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.copy_to">
+<code class="descname">copy_to</code><span class="sig-paren">(</span><em>netlist</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.copy_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.copy_to" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Netlist.element_names">
+<code class="descname">element_names</code><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.element_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Netlist.elements">
+<code class="descname">elements</code><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.get_node">
+<code class="descname">get_node</code><span class="sig-paren">(</span><em>node</em>, <em>create=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.get_node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.get_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Netlist.gnd">
+<code class="descname">gnd</code><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.gnd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.has_ground_node">
+<code class="descname">has_ground_node</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.has_ground_node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.has_ground_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.model">
+<code class="descname">model</code><span class="sig-paren">(</span><em>name</em>, <em>modele_type</em>, <em>**parameters</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a model.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Netlist.model_names">
+<code class="descname">model_names</code><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.model_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Netlist.models">
+<code class="descname">models</code><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Netlist.node_names">
+<code class="descname">node_names</code><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.node_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Netlist.nodes">
+<code class="descname">nodes</code><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.subcircuit">
+<code class="descname">subcircuit</code><span class="sig-paren">(</span><em>subcircuit</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.subcircuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.subcircuit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a sub-circuit.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Netlist.subcircuit_names">
+<code class="descname">subcircuit_names</code><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.subcircuit_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Netlist.subcircuits">
+<code class="descname">subcircuits</code><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.subcircuits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.Node">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">Node</code><span class="sig-paren">(</span><em>netlist</em>, <em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>This class implements a node in the circuit. It stores a reference to the pins connected to
+the node.</p>
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Node.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><em>pin</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Node.connect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Node.connect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Node.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><em>pin</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Node.disconnect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Node.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Node.is_ground_node">
+<code class="descname">is_ground_node</code><a class="headerlink" href="#PySpice.Spice.Netlist.Node.is_ground_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Node.name">
+<code class="descname">name</code><a class="headerlink" href="#PySpice.Spice.Netlist.Node.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Node.netlist">
+<code class="descname">netlist</code><a class="headerlink" href="#PySpice.Spice.Netlist.Node.netlist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Node.pins">
+<code class="descname">pins</code><a class="headerlink" href="#PySpice.Spice.Netlist.Node.pins" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.OptionalPin">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">OptionalPin</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#OptionalPin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.OptionalPin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.OptionalPin.name">
+<code class="descname">name</code><a class="headerlink" href="#PySpice.Spice.Netlist.OptionalPin.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.Pin">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">Pin</code><span class="sig-paren">(</span><em>element</em>, <em>pin_definition</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Pin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Pin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.PinDefinition" title="PySpice.Spice.Netlist.PinDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">PySpice.Spice.Netlist.PinDefinition</span></code></a></p>
+<p>This class implements a pin of an element. It stores a reference to the element, the name of the
+pin and the node.</p>
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Pin.add_current_probe">
+<code class="descname">add_current_probe</code><span class="sig-paren">(</span><em>circuit</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Pin.add_current_probe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Pin.add_current_probe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a current probe between the node and the pin.</p>
+<p>The ammeter is named <em>ElementName_PinName</em>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Pin.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Pin.disconnect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Pin.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Pin.element">
+<code class="descname">element</code><a class="headerlink" href="#PySpice.Spice.Netlist.Pin.element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Pin.node">
+<code class="descname">node</code><a class="headerlink" href="#PySpice.Spice.Netlist.Pin.node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.PinDefinition">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">PinDefinition</code><span class="sig-paren">(</span><em>position</em>, <em>name=None</em>, <em>alias=None</em>, <em>optional=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#PinDefinition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.PinDefinition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>This class defines a pin of an element.</p>
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.PinDefinition.alias">
+<code class="descname">alias</code><a class="headerlink" href="#PySpice.Spice.Netlist.PinDefinition.alias" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.PinDefinition.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#PinDefinition.clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.PinDefinition.clone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.PinDefinition.name">
+<code class="descname">name</code><a class="headerlink" href="#PySpice.Spice.Netlist.PinDefinition.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.PinDefinition.optional">
+<code class="descname">optional</code><a class="headerlink" href="#PySpice.Spice.Netlist.PinDefinition.optional" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.PinDefinition.position">
+<code class="descname">position</code><a class="headerlink" href="#PySpice.Spice.Netlist.PinDefinition.position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.SubCircuit">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">SubCircuit</code><span class="sig-paren">(</span><em>name</em>, <em>*nodes</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#SubCircuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.SubCircuit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.Netlist" title="PySpice.Spice.Netlist.Netlist"><code class="xref py py-class docutils literal notranslate"><span class="pre">PySpice.Spice.Netlist.Netlist</span></code></a></p>
+<p>This class implements a sub-cicuit netlist.</p>
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.SubCircuit.check_nodes">
+<code class="descname">check_nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#SubCircuit.check_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.SubCircuit.check_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check for dangling nodes in the subcircuit.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.SubCircuit.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#SubCircuit.clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.SubCircuit.clone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.SubCircuit.external_nodes">
+<code class="descname">external_nodes</code><a class="headerlink" href="#PySpice.Spice.Netlist.SubCircuit.external_nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.SubCircuit.name">
+<code class="descname">name</code><a class="headerlink" href="#PySpice.Spice.Netlist.SubCircuit.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.SubCircuit.parameters">
+<code class="descname">parameters</code><a class="headerlink" href="#PySpice.Spice.Netlist.SubCircuit.parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parameters</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.Netlist.SubCircuitFactory">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Netlist.</code><code class="descname">SubCircuitFactory</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#SubCircuitFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.SubCircuitFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.SubCircuit" title="PySpice.Spice.Netlist.SubCircuit"><code class="xref py py-class docutils literal notranslate"><span class="pre">PySpice.Spice.Netlist.SubCircuit</span></code></a></p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="NgSpice.html" class="btn btn-neutral float-right" title="11.1.9.7. NgSpice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Library.html" class="btn btn-neutral float-left" title="11.1.9.5. Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Fabrice Salvaire
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+  
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://stats.fabrice-salvaire.fr/";
+    _paq.push(['setTrackerUrl', u+'kiwi']);
+    _paq.push(['setSiteId', 6]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'kiwi.js';
+  s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="https://stats.fabrice-salvaire.fr/kiwi?idsite=6&rec=1" style="border:0;" alt="" /></p></noscript>
+
+
+</body>
+</html>

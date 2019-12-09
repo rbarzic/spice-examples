@@ -1,0 +1,13 @@
+
+======
+ Xyce
+======
+
+.. toctree::
+    Xyce/RawFile
+    Xyce/Server
+    Xyce/Simulation
+
+.. automodule:: PySpice.Spice.Xyce
+   :members:
+   :show-inheritance:
