@@ -1,0 +1,34 @@
+* CMOS Inverter testbench for ngspice
+
+.include ../../imported/osu_soc/cadence/lib/tsmc018/lib/tsmc018.m
+.include ../../imported/osu_soc/cadence/lib/tsmc018/signalstorm/osu018_stdcells.sp
+
+VCC vcc 0 DC=1.8V
+*                   TD   TR  TF PW    PER
+VX vin 0 DC=0.0v pulse 0 1.8v 20n 10n 10n 100n 200n
+
+X1 vin vout vcc 0 INVx1
+
+.tran 10ps 500ns 0
+
+.control
+  let start_vcc = 1.8 
+  let stop_vcc  = 0.5 - 000.1 $ to take in account float inaccuracy
+  let delta_cc = 0.1 
+  let curr_vcc   = start_vcc
+* loop
+  echo parameter sweep > result.txt
+  while curr_vcc >= stop_vcc
+    alter VCC curr_vcc
+    alter @VX[pulse]  [ 0 $&curr_vcc 20n 10n 10n 100n 200n ]
+*    tran 10ps 1us 0
+    run
+    write tran-sweep.out v(vin) v(vout)
+    set appendwrite
+    echo $&curr_vcc  >> result.txt
+    let curr_vcc = curr_vcc - delta_cc 
+  end
+.endc 
+
+.end
+

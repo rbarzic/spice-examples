@@ -5,3 +5,6 @@
 *.log
 
 
+*~
+*.out
+/ngspice/simple_inverter_osu_soc/result.txt

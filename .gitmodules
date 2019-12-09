@@ -1,0 +1,3 @@
+[submodule "imported/osu_soc"]
+	path = imported/osu_soc
+	url = git@github.com:rbarzic/osu_soc.git

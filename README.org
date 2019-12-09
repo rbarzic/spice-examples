@@ -8,10 +8,29 @@ related tools
 
 * ngsice/simple_inverter 
 
+A simple inverter simulation using ngspice 
 
+* ngsice/simple_inverter_osu_soc 
+
+An inverter from the OSU_SOC PDK together with a simulation "loop" 
+where the voltage is decreased from 1.8v down to 0.5v
+
+
+* ngspice/alterparam
+
+A example of the usage of alterparam from the documentation
 
 * pyspice/simple_inverter
 
  - .lib file
    - .MODEL NM NMOS LEVEL=8 => .MODEL NM NMOS (LEVEL=8)
    - Check source code for parameter position for complex voltage source
+
+A simple example of a NGSPICE simulation controlled by PySpice (assuming ngspice is installed in the default location)
+
+
+* pyspice/simple_inverter_shared
+
+
+A simple example of a NGSPICE simulation controlled by PySpice using the ngspice shared library.
+Location of the NgSpice library is controlled by an environment variable
