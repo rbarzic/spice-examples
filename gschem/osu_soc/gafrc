@@ -1,0 +1,2 @@
+(component-library "../oniolib")
+(component-library "../onio_dig_lib")
