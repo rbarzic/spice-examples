@@ -1,0 +1,13 @@
+ CMOS Inverter testbench for ngspice
+
+.include ../../../imported/osu_soc/cadence/lib/tsmc018/lib/tsmc018.m
+.include ./ringosc.sch.spi
+
+* low voltage -> slow oscillation
+VCC vcc 0 DC=1.0V 
+
+X1 o18oscout vcc 0 ringosc
+
+.tran 10ps 600ns 0
+
+

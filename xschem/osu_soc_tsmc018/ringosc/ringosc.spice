@@ -1,0 +1,22 @@
+**.subckt ringosc vcc gnd o18oscout
+*.ipin vcc
+*.ipin gnd
+*.opin o18oscout
+x1 vcc net3 net1 gnd invx1
+x2 vcc net1 net2 gnd invx1
+x3 vcc net2 net3 gnd invx1
+x4 vcc net3 o18oscout gnd invx1
+**.ends
+
+* expanding   symbol:  ../inverter/invx1.sym # of pins=4
+
+.subckt invx1  vcc in out gnd
+*.ipin in
+*.opin out
+*.ipin vcc
+*.ipin gnd
+M1 out in vcc vcc pmos w=5u l=0.18u m=1
+M2 out in gnd gnd nmos w=5u l=0.18u m=1
+.ends
+
+.end

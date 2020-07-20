@@ -1,0 +1,23 @@
+
+* .subckt ringosc vcc gnd 018oscout
+.subckt ringosc o18oscout  vcc gnd 
+*.ipin vcc
+*.ipin gnd
+*.opin 018oscout
+x1 vcc net3 net1 gnd invx1
+x2 vcc net1 net2 gnd invx1
+x3 vcc net2 net3 gnd invx1
+x4 vcc net3 o18oscout gnd invx1
+.ends
+
+
+
+.subckt invx1  vcc in out gnd
+*.ipin in
+*.opin out
+*.ipin vcc
+*.ipin gnd
+M1 out in vcc vcc pfet w=1u l=0.18u m=1
+M2 out in gnd gnd nfet w=1u l=0.18u m=1
+.ends
+
