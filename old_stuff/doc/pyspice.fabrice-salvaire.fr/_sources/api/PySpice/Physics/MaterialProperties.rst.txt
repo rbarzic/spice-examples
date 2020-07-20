@@ -1,8 +1,0 @@
-
-====================
- MaterialProperties
-====================
-
-.. automodule:: PySpice.Physics.MaterialProperties
-   :members:
-   :show-inheritance:

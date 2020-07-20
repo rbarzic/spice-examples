@@ -1,8 +1,0 @@
-
-============
- Simulation
-============
-
-.. automodule:: PySpice.Spice.Simulation
-   :members:
-   :show-inheritance:

@@ -1,8 +1,0 @@
-
-======
- Unit
-======
-
-.. automodule:: PySpice.Unit.Unit
-   :members:
-   :show-inheritance:

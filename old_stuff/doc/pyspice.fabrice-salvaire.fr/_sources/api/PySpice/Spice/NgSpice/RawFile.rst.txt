@@ -1,8 +1,0 @@
-
-=========
- RawFile
-=========
-
-.. automodule:: PySpice.Spice.NgSpice.RawFile
-   :members:
-   :show-inheritance:

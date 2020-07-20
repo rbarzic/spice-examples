@@ -1,8 +1,0 @@
-
-========
- Server
-========
-
-.. automodule:: PySpice.Spice.Xyce.Server
-   :members:
-   :show-inheritance:

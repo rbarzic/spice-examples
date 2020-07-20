@@ -1,8 +1,0 @@
-
-===============
- ConfigInstall
-===============
-
-.. automodule:: PySpice.Config.ConfigInstall
-   :members:
-   :show-inheritance:

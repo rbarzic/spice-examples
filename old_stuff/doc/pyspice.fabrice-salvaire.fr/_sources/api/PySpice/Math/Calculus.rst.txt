@@ -1,8 +1,0 @@
-
-==========
- Calculus
-==========
-
-.. automodule:: PySpice.Math.Calculus
-   :members:
-   :show-inheritance:
