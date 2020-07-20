@@ -1,0 +1,2 @@
+(component-library "../symbols"  "osu_soc_tsmc018")
+(component-library "../inverter"  "osu_soc_tsmc018_inverter")

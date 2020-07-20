@@ -1,0 +1,15 @@
+ CMOS Inverter testbench for ngspice
+
+.include ../../../imported/osu_soc/cadence/lib/tsmc018/lib/tsmc018.m
+.include ./invx1.sch.spi
+
+
+VCC vcc 0 DC=1.8V
+*                   TD   TR  TF PW    PER
+VX vin 0 DC=0.0v pulse 0 1.8v 20n 10n 10n 100n 200n
+
+X1 vin vout vcc 0 INVx1
+
+.tran 10ps 600ns 0
+
+

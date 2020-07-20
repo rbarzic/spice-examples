@@ -1,0 +1,25 @@
+*******************************
+* Begin .SUBCKT model         *
+* spice-sdb ver 4.28.2007     *
+*******************************
+*vvvvvvvv  Included SPICE model from invx1.sch.spi vvvvvvvv
+*******************************
+* Begin .SUBCKT model         *
+* spice-sdb ver 4.28.2007     *
+*******************************
+.SUBCKT invx1 A Y vcc gnd 
+*==============  Begin SPICE netlist of main design ============
+M1 Y A gnd gnd nfet  l=0.18u w=1u
+M0 Y A vcc vcc pfet  l=0.18u w=1u
+.ends invx1
+*******************************
+*^^^^^^^^  End of included SPICE model from invx1.sch.spi ^^^^^^^^
+*
+*==============  Begin SPICE netlist of main design ============
+.SUBCKT ringosc o18oscout vcc gnd 
+X4 1 o18oscout vcc gnd invx1
+X3 3 1 vcc gnd invx1
+X2 2 3 vcc gnd invx1
+X1 1 2 vcc gnd invx1
+.ends ringosc
+*******************************
