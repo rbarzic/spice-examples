@@ -1,14 +1,19 @@
-# Makefile for osu_soc/inverter
+# Makefile for osu_soc/ringosc
 
 CELL=ringosc
 FIX_SPICE_NETLIST?=../../scripts/fix_spice_netlist.py
 
 schem:
-	gschem $(CELL).sch &
+	xschem $(CELL).sch
 
-netlist:
-	gnetlist -g spice-sdb -o $(CELL).sch.spi $(CELL).sch
-	$(FIX_SPICE_NETLIST) $(CELL).sch.spi
+netlist1:
+	xschem -o . -n -s -q --script  ./set_top_subckt.tcl   ./ringosc.sch
+
+netlist2:
+	xschem -o . -n -s -q --tcl  ./set_top_subckt.tcl  ./ringosc.sch
+
+netlist3:
+	xschem -o . -n -s -q    ./ringosc.sch
 
 sim_interactive:
 	ngspice -a tb_$(CELL).spi

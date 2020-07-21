@@ -15,8 +15,8 @@ x4 vcc net3 o18oscout gnd invx1
 *.opin out
 *.ipin vcc
 *.ipin gnd
-M1 out in vcc vcc pmos w=5u l=0.18u m=1
-M2 out in gnd gnd nmos w=5u l=0.18u m=1
+M1 out in vcc vcc pfet w=1u l=0.18u m=1
+M2 out in gnd gnd nfet w=1u l=0.18u m=1
 .ends
 
 .end
