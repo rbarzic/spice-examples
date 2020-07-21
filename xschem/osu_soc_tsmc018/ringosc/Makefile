@@ -5,14 +5,8 @@ CELL=ringosc
 schem:
 	xschem $(CELL).sch
 
-netlist1:
-	xschem -o . -n -s -q --script  ./set_top_subckt.tcl   ./ringosc.sch
-
-netlist2:
-	xschem -o . -n -s -q --tcl  ./set_top_subckt.tcl  ./ringosc.sch
-
-netlist3:
-	xschem -o . -n -s -q    ./ringosc.sch
+netlist:
+	xschem -o . -n -s -q --tcl 'set top_subckt 1' ./ringosc.sch
 
 sim_interactive:
 	ngspice -a tb_$(CELL).spi
