@@ -1,7 +1,6 @@
 # Makefile for osu_soc/ringosc
 
 CELL=ringosc
-FIX_SPICE_NETLIST?=../../scripts/fix_spice_netlist.py
 
 schem:
 	xschem $(CELL).sch
