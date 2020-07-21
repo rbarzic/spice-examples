@@ -1,12 +1,12 @@
-**.subckt ringosc vcc gnd o18oscout
+.subckt ringosc o18oscout vcc gnd
+*.opin o18oscout
 *.ipin vcc
 *.ipin gnd
-*.opin o18oscout
-x1 vcc net3 net1 gnd invx1
+x4 vcc net3 o18oscout gnd invx1
 x2 vcc net1 net2 gnd invx1
 x3 vcc net2 net3 gnd invx1
-x4 vcc net3 o18oscout gnd invx1
-**.ends
+x1 vcc net3 net1 gnd invx1
+.ends
 
 * expanding   symbol:  ../inverter/invx1.sym # of pins=4
 
